@@ -55,7 +55,6 @@ public class StartMenuInput : MonoBehaviour, IPointerClickHandler
 	public void QuitGameClicked()
 	{
 		Debug.Log("QuitGame Clicked");	
-		Debug.Log("QuitGame Clicked");	
 	}
 	public void OnPointerClick(PointerEventData eventData)
 	{
