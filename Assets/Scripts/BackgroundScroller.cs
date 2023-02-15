@@ -5,11 +5,12 @@ using UnityEngine;
 public class BackgroundScroller : MonoBehaviour
 {
  
-    [SerializeField] private float ScrollSpeed = 0.2f;
     [SerializeField] private List<GameObject> backgroundParts;
     [SerializeField] private GameObject backgroundParent;
-    private const float ScreenWidth = 2f;
-    private const float ScreenHeight = 3.5f;
+    private float ScrollSpeed = 5f;
+    private const float ScreenWidth = 9f;
+    private const float ScreenHeight = 15f;
+    private const float BackgroundPartScale = 4.7f;
     private const float BackgroundPartWidth = 2f;
     private const float BackgroundPartHeight = 6.4f;
 
@@ -25,7 +26,7 @@ public class BackgroundScroller : MonoBehaviour
 
 		for (int i = 0; i < backgroundParts.Count; i++)
         {
-            backgroundParts[i].transform.position = new Vector2(0, BackgroundPartHeight/2+BackgroundPartHeight * i);
+            backgroundParts[i].transform.position = new Vector2(0, BackgroundPartHeight/2* BackgroundPartScale + BackgroundPartHeight * i* BackgroundPartScale);
         }
         backgroundParent.transform.position = new Vector3 (ScreenWidth/2, 0, 0);
 
