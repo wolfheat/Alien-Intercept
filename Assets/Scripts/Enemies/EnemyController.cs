@@ -25,9 +25,15 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        OscillatingMovement();
-		ForwardMovement();
+        Movement();
+        
     }
+
+    protected virtual void Movement()
+    {
+		OscillatingMovement();
+		ForwardMovement();
+	}
 
     private void ForwardMovement()
     {

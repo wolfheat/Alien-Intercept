@@ -5,12 +5,11 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] List<EnemyController> enemies;
-    [SerializeField] EnemyController enemyPrefab;
     [SerializeField] GameObject EnemyParent;
     
 	private void Start()
     {
-        StartCoroutine(Spawn(10,0.5f));
+        StartCoroutine(Spawn(4,0.5f));
     }
 
 	private IEnumerator Spawn(int amt,float t)
@@ -20,7 +19,15 @@ public class EnemySpawner : MonoBehaviour
         //Simple spawner
         while (createdAmount < amt)
         {
-            EnemyController newEnemy = Instantiate(enemyPrefab,EnemyParent.transform);
+            EnemyController newEnemy = Instantiate(enemies[0],EnemyParent.transform);
+            newEnemy.PlaceRandom();
+			yield return new WaitForSeconds(t);
+            createdAmount++;       
+        }
+        createdAmount = 0;
+		while (createdAmount < amt)
+        {
+            EnemyController newEnemy = Instantiate(enemies[1],EnemyParent.transform);
             newEnemy.PlaceRandom();
 			yield return new WaitForSeconds(t);
             createdAmount++;       
