@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     {
         // Get Mouse Position
         Vector3 worldPosition = Mouse.current.position.ReadValue();
-        Vector3 worldPositionClamped = new Vector3(Scale*Mathf.Clamp(worldPosition.x,5,390f), Scale * Mathf.Clamp(worldPosition.y, 20, 600f),-0.1f);
+        Vector3 worldPositionClamped = new Vector2(Scale*Mathf.Clamp(worldPosition.x,5,390f), Scale * Mathf.Clamp(worldPosition.y, 20, 600f));
         
         //Camera.main.ScreenToWorldPoint();
         transform.position = worldPositionClamped;   

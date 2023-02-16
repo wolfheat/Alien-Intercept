@@ -20,7 +20,7 @@ public class EnemyController : MonoBehaviour
 
     public void PlaceRandom()
     {
-        transform.position = new Vector3(Random.Range(3f,9f), Random.Range(14f, 16f),0.1f);
+        transform.position = new Vector2(Random.Range(3f,9f), Random.Range(14f, 16f));
     }
 
     private void Update()
