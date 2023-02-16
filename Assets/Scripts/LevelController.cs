@@ -6,7 +6,6 @@ public class LevelController : MonoBehaviour
     [SerializeField] PlayerController playerControllerPrefab;
     [SerializeField] BackgroundController backgroundController;
 
-
 	private void Start()
     {
         

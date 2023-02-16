@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] GameObject bulletHolder;
     [SerializeField] List<GameObject> bulletCreationPositions;
-
     
 
     private float bulletCreationTime = 0.1f;

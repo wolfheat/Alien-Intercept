@@ -11,6 +11,7 @@ public class BackgroundController : MonoBehaviour
 
     private const float ScreenWidth = 9f;
     private int currentLevel = 0;
+    private float screenHeight;
 
     public bool IsScrolling { get; set; } = false;
 
@@ -20,7 +21,7 @@ public class BackgroundController : MonoBehaviour
 	}
 
 
-    private void Update()
+	private void Update()
     {
 		if(IsScrolling)activeBackground.Scroll();
     }

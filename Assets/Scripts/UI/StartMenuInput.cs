@@ -16,7 +16,7 @@ public class StartMenuInput : MonoBehaviour, IPointerClickHandler
     {
 		levelController = FindObjectOfType<LevelController>();
 
-		Inputs.Instance.Controls.MainActionMap.Space.performed += _ => ToggleStartMenu();// = _.ReadValue<float>();
+		//Inputs.Instance.Controls.MainActionMap.Space.performed += _ => ToggleStartMenu();// = _.ReadValue<float>();
 	}
 
 	private void ToggleStartMenu()
