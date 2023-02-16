@@ -10,39 +10,28 @@ public class StartMenuInput : MonoBehaviour, IPointerClickHandler
 	[SerializeField] private GameObject startMenu;
 	[SerializeField] private GameObject buttonHolder;	
 	[SerializeField] private List<Image> images;
+	private LevelController levelController;
 	
-	private List<string> names = new List<string>() {"Start", "Settings","Credits","Quit"};
-		 
-
 	private void Start()
     {
+		levelController = FindObjectOfType<LevelController>();
+
 		Inputs.Instance.Controls.MainActionMap.Space.performed += _ => ToggleStartMenu();// = _.ReadValue<float>();
-
-		NameButtons();
-	}
-
-
-	private void NameButtons()
-	{
-		int i = 0;
-		foreach (var button in buttonHolder.GetComponentsInChildren<Button>())
-		{
-			button.GetComponent<Button>().GetComponentInChildren<TextMeshProUGUI>().text = names[i];
-			i++;
-		}
 	}
 
 	private void ToggleStartMenu()
 	{
 		Debug.Log("Toggle start Menu.");
 		Debug.Log("Gameobject: "+ startMenu.gameObject);
-
 		startMenu.gameObject.SetActive(!startMenu.gameObject.activeSelf);
+
 	}
 
 	public void StartGameClicked()
 	{
 		Debug.Log("StartGame Clicked");
+		startMenu.gameObject.SetActive(false);
+		levelController.StartLevel();
 	}
 	public void SettingsClicked()
 	{

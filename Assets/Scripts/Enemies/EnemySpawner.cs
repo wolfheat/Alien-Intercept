@@ -17,7 +17,7 @@ public class EnemySpawner : MonoBehaviour
         Debug.Log("Creating: "+amt+" enemies. 1 each :"+ t);
         int createdAmount = 0;
         //Simple spawner
-        while (createdAmount < amt)
+        while (createdAmount <= amt)
         {
             EnemyController newEnemy = Instantiate(enemies[0],EnemyParent.transform);
             newEnemy.PlaceRandom();
@@ -25,7 +25,7 @@ public class EnemySpawner : MonoBehaviour
             createdAmount++;       
         }
         createdAmount = 0;
-		while (createdAmount < amt)
+		while (createdAmount <= amt)
         {
             EnemyController newEnemy = Instantiate(enemies[1],EnemyParent.transform);
             newEnemy.PlaceRandom();
