@@ -12,6 +12,10 @@ public class EnemyController : MonoBehaviour
     private float velChangeTime = 1f;
     private float velChangeTimer;
 
+    private float health = 100;
+
+
+
 	private void Start()
     {
         velChangeTimer = velChangeTime / 2;
@@ -22,12 +26,44 @@ public class EnemyController : MonoBehaviour
     {
         transform.position = new Vector2(Random.Range(3f,9f), Random.Range(14f, 16f));
     }
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.gameObject.layer == LayerMask.NameToLayer("Bullets"))
+        {
+            Bullet bullet = col.gameObject.GetComponent<Bullet>();
 
-    private void Update()
+            health -= bullet.Damage;
+            bullet.Die();
+            if(health <= 0f) Die();                
+        }
+	}
+	public void Die()
+	{
+		ParticleSystemController.Instance.PlayParticleAt(ParticleType.enemyBlowUpA,transform);
+		gameObject.SetActive(false);
+	}
+    
+	public void JustRemove()
+	{
+		gameObject.SetActive(false);
+	}
+
+
+	private void OutOfBoundsCheck()
+	{
+
+		if (transform.position.y < 0f)
+		{
+			JustRemove();
+		}
+	}
+
+	private void Update()
     {
         Movement();
-        
-    }
+        OutOfBoundsCheck();
+
+	}
 
     protected virtual void Movement()
     {

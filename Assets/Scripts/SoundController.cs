@@ -45,8 +45,11 @@ public class SoundController : MonoBehaviour
         musicSourceIntense.loop = true;
         musicSourceIntense.volume = 0.5f;
         musicSource.loop = true;
-        musicSource.volume = 0.5f;
+        musicSource.volume = 0.2f;
         sfxSource.volume = presetSFXStepVolume;
+
+        doPlayMusic = GameSettings.UseMusic;
+
         PlayMusic();
 
         Inputs.Instance.Controls.MainActionMap.MusicToggle.performed += _ => MuteToggle();// = _.ReadValue<float>();

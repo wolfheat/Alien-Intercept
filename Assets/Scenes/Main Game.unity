@@ -227,7 +227,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -82556761
-  m_SortingLayer: 1
+  m_SortingLayer: -1
   m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.1745283, g: 0.5907744, b: 1, a: 1}
@@ -343,7 +343,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -82556761
-  m_SortingLayer: 1
+  m_SortingLayer: -1
   m_SortingOrder: -2
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.55865324, g: 0.17647058, b: 1, a: 1}
@@ -679,7 +679,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -82556761
-  m_SortingLayer: 1
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1105,7 +1105,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -82556761
-  m_SortingLayer: 1
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1637,6 +1637,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4591288775169219475, guid: d3485bb68f24f204c8ca69723c1dc86f, type: 3}
   m_PrefabInstance: {fileID: 987063728}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1038718776
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1038718777}
+  - component: {fileID: 1038718778}
+  m_Layer: 0
+  m_Name: ParticleSystemController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1038718777
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038718776}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.53, y: 7.9, z: 14.531825}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1038718778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038718776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fec3df00e9946724aa289341dea0de81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyBlowUpPrefab: {fileID: 5670177459265837330, guid: e4a4e2d5dbc5bb4499b46ff50e67df44, type: 3}
 --- !u!1 &1039001249
 GameObject:
   m_ObjectHideFlags: 0
@@ -2360,6 +2404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerControllerPrefab: {fileID: 700422834}
   backgroundController: {fileID: 1684862658}
+  enemySpawner: {fileID: 1644265867}
 --- !u!4 &1253341617
 Transform:
   m_ObjectHideFlags: 0
@@ -2447,8 +2492,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 4212243491488755429, guid: 3a2760eebf37e7e408c91e5c43f53074, type: 3}
-  - {fileID: 372013455352263437, guid: 066977b377848d44c8f3c794fc8d3127, type: 3}
+  - {fileID: 8298117242605547549, guid: 3a2760eebf37e7e408c91e5c43f53074, type: 3}
+  - {fileID: -7111606055067251308, guid: 668988e80bed3ad42bea602dfa0fea42, type: 3}
   EnemyParent: {fileID: 811414420}
 --- !u!4 &1644265868
 Transform:

@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour
     private float outOfBoundsY = 2f;
     float screenHeight;
 
+    public float Damage { get; internal set; } = 10f;
+
     private void Update()
     {
         // Move forward
@@ -32,9 +34,10 @@ public class Bullet : MonoBehaviour
         if (lifeTime <= 0f) Die();
     }
 
-    private void Die()
-    {
-        Destroy(gameObject);
+    public void Die()
+	{
+		//Destroy(gameObject);
+		gameObject.SetActive(false);
     }
 
     private void Move()

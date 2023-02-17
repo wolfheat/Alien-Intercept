@@ -5,6 +5,7 @@ public class LevelController : MonoBehaviour
 {
     [SerializeField] PlayerController playerControllerPrefab;
     [SerializeField] BackgroundController backgroundController;
+    [SerializeField] EnemySpawner enemySpawner;
 
 	private void Start()
     {
@@ -20,7 +21,15 @@ public class LevelController : MonoBehaviour
         SetBackground();
         ActivateBackground();
 
+        // Activate Enemy Spawner
+        ActivateEnemySpawner();
+
     }
+
+    private void ActivateEnemySpawner()
+    {
+        enemySpawner.StartSpawnRoutine(0);
+	}
 
     private void ActivateBackground()
     {
