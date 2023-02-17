@@ -12,6 +12,7 @@ public class SpawnGhost : MonoBehaviour
 
     private void SpawnNewGhost()
     {
+        if (ghost.gameObject.activeSelf) return;
         Debug.Log("Spawn");
         ghost.gameObject.SetActive(true);
         ghost.transform.position = transform.position;

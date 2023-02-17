@@ -1,0 +1,53 @@
+DEVLOG FOR - ALL BY AI - GAMEJAM
+13-23 Feb 2023
+
+
+* IDEAS
+- Space shooter autoscroller.
+
+
+16/7	* Starting with simple prototype
+		* Player movement working with damping/maxvelocity
+		* Enemies spawn at keypress but unanimate
+		* Player can shoot
+17/2	* 
+
+		BUG
+		
+		TODO
+		* Make enemy genereation system for entire levels
+		* Make Boss and boss behaviour
+		* Add shake and other effects for death of enemy, effect for getting hit (red)
+		* Add game sound effects
+		* Add health system for player
+		* Level progression bar? 
+		
+		FEATURES DONE
+		* Did some compressing of music file for lower size
+		
+		CHECK BEFORE FINISHING
+		*
+				
+				
+Time 10 Days total
+
+		BUGS  
+		* 
+
+		DOES
+		* 
+		
+		MAYBEES
+		*
+
+		CHECKLIST FOR BETTER PLAYER EXPERIENCE
+
+		* BUGS, CRASHES, SLOW PERFORMANCE
+		* MISLEADING MARKETING
+		* NOT ENGAGING WITH COMMUNITY
+		* CONFIGURABLE CONTROLS, 
+		* TEXT TO SMALL, 
+		* CONTRAST, 
+		* MISSING FEATURE
+
+------ ------- ------
