@@ -61,7 +61,6 @@ public class BackgroundByParts : MonoBehaviour
 	public void MoveBottomPartToTop()
 	{
 		if (backgroundParts.Count < 2) return;
-		Debug.Log("Moving Bottom parts");
 		GameObject firstItem = backgroundParts[0];
 		backgroundParts.RemoveAt(0);
 		backgroundParts.Add(firstItem);

@@ -55,16 +55,25 @@ public class SoundController : MonoBehaviour
         Inputs.Instance.Controls.MainActionMap.MusicToggle.performed += _ => MuteToggle();// = _.ReadValue<float>();
 	}
 
+    public void UseMusic(bool use)
+    {
+        doPlayMusic = use;
+        DoMusicSetting();
+	}
     private void MuteToggle()
     {
 		doPlayMusic = !doPlayMusic;
-        Debug.Log("Music: "+doPlayMusic);
+        DoMusicSetting();
+	}
+    private void DoMusicSetting()
+    {
 		if (doPlayMusic) PlayMusic();
 		else
 		{
 			musicSource.Stop();
 		}
-	}
+    }
+
 	private void Update()
     {
         if(doingFadeout) DoFadeout();

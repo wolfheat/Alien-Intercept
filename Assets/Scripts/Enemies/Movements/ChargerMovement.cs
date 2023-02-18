@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class ChargerController : EnemyController
+public class ChargerMovement : OscillatingMovement
 {
 	private float chargeSpeed = 4f;
 	private float chargeSpeedup = 8f;
@@ -9,15 +9,14 @@ public class ChargerController : EnemyController
 	private float chargeTimer = 0;
 	private float chargeTime = 3f;
 
-
-	protected override void Movement()
+	public override void Movement()
 	{
 		chargeTimer += Time.deltaTime;
 		if (chargeTimer < chargeTime) base.Movement();
-		else ChargerMovement();
+		else ChargMovement();
 	}
 
-	private void ChargerMovement()
+	private void ChargMovement()
 	{
 		chargeSpeed += Time.deltaTime*chargeSpeedup;
 		transform.position += Vector3.down * chargeSpeed * Time.deltaTime;

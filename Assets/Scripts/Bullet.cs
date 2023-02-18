@@ -8,7 +8,8 @@ public class Bullet : MonoBehaviour
     private float outOfBoundsY = 2f;
     float screenHeight;
 
-    public float Damage { get; internal set; } = 10f;
+    public int Damage { get {return damage;}}
+    [SerializeField] private int damage = 10;
 
     private void Update()
     {
@@ -19,7 +20,12 @@ public class Bullet : MonoBehaviour
 
     }
 
-    private void OutOfBoundsCheck()
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        ParticleSystemController.Instance.PlayParticleAt(ParticleType.BulletSplatter, transform);
+	}
+
+	private void OutOfBoundsCheck()
 	{
 
 		if (transform.position.y > GameSettings.ScreenHeight)

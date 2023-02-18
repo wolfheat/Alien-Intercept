@@ -10,7 +10,13 @@ DEVLOG FOR - ALL BY AI - GAMEJAM
 		* Player movement working with damping/maxvelocity
 		* Enemies spawn at keypress but unanimate
 		* Player can shoot
-17/2	* 
+17/2	* Added particle effects for enemies and bullets destroyed
+		* Changed to HDR Pipeline
+		* Added some lightening effects, darkened background highligt units
+		* Decided on a solution for the enemy creation. Using animation
+		and having 11 slots where the animation can origin from the top
+		this makes it possible to move the enemys animation path by changing its parent.
+
 
 		BUG
 		

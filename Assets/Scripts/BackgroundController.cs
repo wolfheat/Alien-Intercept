@@ -9,7 +9,6 @@ public class BackgroundController : MonoBehaviour
     [SerializeField] private List<BackgroundByParts> backgrounds = new List<BackgroundByParts>();
     private BackgroundByParts activeBackground = null;
 
-    private const float ScreenWidth = 9f;
     private int currentLevel = 0;
     private float screenHeight;
 
@@ -17,7 +16,7 @@ public class BackgroundController : MonoBehaviour
 
     private void SetLevelPosition()
     {
-		activeBackground.transform.position = new Vector3(ScreenWidth / 2, 0, 0);
+		activeBackground.transform.localPosition = new Vector3(GameSettings.ScreenWidth / 2, 0, 0);
 	}
 
 
