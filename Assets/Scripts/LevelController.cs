@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelController : MonoBehaviour
@@ -6,6 +7,8 @@ public class LevelController : MonoBehaviour
     [SerializeField] PlayerController playerControllerPrefab;
     [SerializeField] BackgroundController backgroundController;
     [SerializeField] EnemySpawner enemySpawner;
+	[SerializeField] List<GameObject> levels = new List<GameObject>();
+
 
 	private void Start()
     {
@@ -22,13 +25,14 @@ public class LevelController : MonoBehaviour
         ActivateBackground();
 
         // Activate Enemy Spawner
-        ActivateEnemySpawner();
+        SetSpawnerLevel();
 
     }
 
-    private void ActivateEnemySpawner()
+    private void SetSpawnerLevel()
     {
-        enemySpawner.StartSpawnRoutine(0);
+        if (levels.Count > 0) enemySpawner.SetLevel(levels[0]);
+        else Debug.LogError("Forgot to assign levels to LevelController");
 	}
 
     private void ActivateBackground()

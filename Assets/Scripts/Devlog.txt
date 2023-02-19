@@ -16,7 +16,8 @@ DEVLOG FOR - ALL BY AI - GAMEJAM
 		* Decided on a solution for the enemy creation. Using animation
 		and having 11 slots where the animation can origin from the top
 		this makes it possible to move the enemys animation path by changing its parent.
-
+18/2	* Created a level design system for creating waves of enemies with scriptable objects 
+		and points that can be placed on the scene and their pos gives Xpos creation and time
 
 		BUG
 		

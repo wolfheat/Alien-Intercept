@@ -6,7 +6,7 @@ interface IHaveMovement
     void Movement();
 }
     
-public class OscillatingMovement : MonoBehaviour, IHaveMovement
+public class OscillatingMovement : Movement, IHaveMovement
 {
 	private float forwardSpeed = 0.3f;
 	private float velChangePerSec = 0.04f;

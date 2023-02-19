@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : Movement
 {
     private float health = 100;
 

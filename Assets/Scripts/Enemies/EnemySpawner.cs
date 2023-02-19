@@ -1,10 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public enum EnemyType{EnemyA,EnemyB,AnimatedA,AnimatedB}
+public enum EnemyMovement{AnimationA,AnimationB,AnimationC,AnimationD}
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -12,13 +15,15 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] GameObject enemyParent;
     [SerializeField] List<GameObject> enemySubParents = new List<GameObject>();
 
+    public GameObject currentLevel = null;
+    public List<EDefinitionPoint> currentLevelPoints;
+	List<EDefinitionPoint> pointsToRemove = new List<EDefinitionPoint>();
 	//  0   1   2   3   4   5   6   7   8   9   10
 	//      |               *               |
 	/*
     VALID STARTPOS
     EnemyAnimationA = 2-7
     EnemyAnimationB = 1,2,3
-
 
     */
 	private Coroutine spawn;
@@ -32,20 +37,63 @@ public class EnemySpawner : MonoBehaviour
     {
 		spawn = StartCoroutine(Spawn(40, 0.5f));
 	}
+    private void Update()
+    {
+        if(currentLevel!=null) RunLevel();
+    }
+    private void RunLevel()
+    {
+        
+        foreach(EDefinitionPoint point in currentLevelPoints)
+        {
+            point.transform.position += Vector3.down * Time.deltaTime;
+            if (point.transform.position.y <= 0f)
+            {
+
+                StartCoroutine(SpawnPointData(point));
+                pointsToRemove.Add(point);
+            }
+        }
+        foreach (var point in pointsToRemove)
+        {
+            currentLevelPoints.Remove(point);
+        }
+    }
+
+    public void SetLevel(GameObject level)
+    {
+        currentLevel = level;
+        currentLevelPoints = new List<EDefinitionPoint>();
+        currentLevelPoints = currentLevel.GetComponentsInChildren<EDefinitionPoint>().ToList();
+	}
     
     private void SpawnByPlayerInput()
     {
         //spawn = StartCoroutine(Spawn(Random.Range(1,20), Random.Range(0.05f, 1f)));
         // SPAWN        ENEMYTYPE, POSITION, ANIMATION
-        SpawnOneAt(EnemyType.AnimatedA,5,"EnemyAnimationA");
+        //SpawnOneAt(EnemyType.AnimatedA,5,"EnemyAnimationA");
 	}
 
-    private void SpawnOneAt(EnemyType type, int steps, string animation="EnemyAnimationA")
+	private IEnumerator SpawnPointData(EDefinitionPoint p)
     {
-        EnemyController newEnemy = Instantiate(enemies[(int)type], enemySubParents[steps].transform);
-        newEnemy.GetComponent<Animator>().Play(animation);
-	}
+        
+		EnemyDefinitionSO enemyDefinition = p.definition;
+        int createdAmount = 0;
+        while (createdAmount < enemyDefinition.unitsAmount)
+        {
+            int positionID = Mathf.RoundToInt(p.transform.localPosition.x)+1;
+			SpawnOneAt(enemyDefinition.type, positionID, enemyDefinition.movement);
+			yield return new WaitForSeconds((float)enemyDefinition.timer);
+            createdAmount++;       
+        }
+    }
 
+    private void SpawnOneAt(EnemyType type, int posID, EnemyMovement movement)
+    {
+        EnemyController newEnemy = Instantiate(enemies[(int)type], enemySubParents[posID].transform);
+        //Debug.Log("Spawning an Enemy of type: "+type+" at pos: "+posID+" using Animation: "+movement.ToString());
+        newEnemy.GetComponent<Animator>().Play(movement.ToString());
+	}
 	private IEnumerator Spawn(int amt,float t)
     {
         int createdAmount = 0;
