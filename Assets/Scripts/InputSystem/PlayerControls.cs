@@ -64,6 +64,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""R"",
+                    ""type"": ""Button"",
+                    ""id"": ""6845f600-2431-45a6-87d2-4d96995458e2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""MusicToggle"",
                     ""type"": ""Button"",
                     ""id"": ""ff5e771c-c280-486d-9a37-2a3b12af0cfe"",
@@ -308,6 +317,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""G"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3a7071ae-2c11-485b-a2dd-dd9672df073f"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""R"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -320,6 +340,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_MainActionMap_CTRL = m_MainActionMap.FindAction("CTRL", throwIfNotFound: true);
         m_MainActionMap_Space = m_MainActionMap.FindAction("Space", throwIfNotFound: true);
         m_MainActionMap_X = m_MainActionMap.FindAction("X", throwIfNotFound: true);
+        m_MainActionMap_R = m_MainActionMap.FindAction("R", throwIfNotFound: true);
         m_MainActionMap_MusicToggle = m_MainActionMap.FindAction("MusicToggle", throwIfNotFound: true);
         m_MainActionMap_WayPointType = m_MainActionMap.FindAction("WayPointType", throwIfNotFound: true);
         m_MainActionMap_RotateR = m_MainActionMap.FindAction("RotateR", throwIfNotFound: true);
@@ -393,6 +414,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_MainActionMap_CTRL;
     private readonly InputAction m_MainActionMap_Space;
     private readonly InputAction m_MainActionMap_X;
+    private readonly InputAction m_MainActionMap_R;
     private readonly InputAction m_MainActionMap_MusicToggle;
     private readonly InputAction m_MainActionMap_WayPointType;
     private readonly InputAction m_MainActionMap_RotateR;
@@ -411,6 +433,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @CTRL => m_Wrapper.m_MainActionMap_CTRL;
         public InputAction @Space => m_Wrapper.m_MainActionMap_Space;
         public InputAction @X => m_Wrapper.m_MainActionMap_X;
+        public InputAction @R => m_Wrapper.m_MainActionMap_R;
         public InputAction @MusicToggle => m_Wrapper.m_MainActionMap_MusicToggle;
         public InputAction @WayPointType => m_Wrapper.m_MainActionMap_WayPointType;
         public InputAction @RotateR => m_Wrapper.m_MainActionMap_RotateR;
@@ -442,6 +465,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @X.started -= m_Wrapper.m_MainActionMapActionsCallbackInterface.OnX;
                 @X.performed -= m_Wrapper.m_MainActionMapActionsCallbackInterface.OnX;
                 @X.canceled -= m_Wrapper.m_MainActionMapActionsCallbackInterface.OnX;
+                @R.started -= m_Wrapper.m_MainActionMapActionsCallbackInterface.OnR;
+                @R.performed -= m_Wrapper.m_MainActionMapActionsCallbackInterface.OnR;
+                @R.canceled -= m_Wrapper.m_MainActionMapActionsCallbackInterface.OnR;
                 @MusicToggle.started -= m_Wrapper.m_MainActionMapActionsCallbackInterface.OnMusicToggle;
                 @MusicToggle.performed -= m_Wrapper.m_MainActionMapActionsCallbackInterface.OnMusicToggle;
                 @MusicToggle.canceled -= m_Wrapper.m_MainActionMapActionsCallbackInterface.OnMusicToggle;
@@ -488,6 +514,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @X.started += instance.OnX;
                 @X.performed += instance.OnX;
                 @X.canceled += instance.OnX;
+                @R.started += instance.OnR;
+                @R.performed += instance.OnR;
+                @R.canceled += instance.OnR;
                 @MusicToggle.started += instance.OnMusicToggle;
                 @MusicToggle.performed += instance.OnMusicToggle;
                 @MusicToggle.canceled += instance.OnMusicToggle;
@@ -528,6 +557,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnCTRL(InputAction.CallbackContext context);
         void OnSpace(InputAction.CallbackContext context);
         void OnX(InputAction.CallbackContext context);
+        void OnR(InputAction.CallbackContext context);
         void OnMusicToggle(InputAction.CallbackContext context);
         void OnWayPointType(InputAction.CallbackContext context);
         void OnRotateR(InputAction.CallbackContext context);

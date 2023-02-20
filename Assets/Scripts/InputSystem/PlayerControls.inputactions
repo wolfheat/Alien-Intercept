@@ -42,6 +42,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "R",
+                    "type": "Button",
+                    "id": "6845f600-2431-45a6-87d2-4d96995458e2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "MusicToggle",
                     "type": "Button",
                     "id": "ff5e771c-c280-486d-9a37-2a3b12af0cfe",
@@ -284,6 +293,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "G",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3a7071ae-2c11-485b-a2dd-dd9672df073f",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "R",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

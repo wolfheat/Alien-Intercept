@@ -12,8 +12,8 @@ public class LevelController : MonoBehaviour
 
 	private void Start()
     {
-        
-    }
+		Inputs.Instance.Controls.MainActionMap.R.performed += _ => RestartLevel();// = _.ReadValue<float>();
+	}
 
 	public void StartLevel()
     {
@@ -25,13 +25,17 @@ public class LevelController : MonoBehaviour
         ActivateBackground();
 
         // Activate Enemy Spawner
-        SetSpawnerLevel();
-
+        SetSpawnerLevel(0);
     }
 
-    private void SetSpawnerLevel()
+    private void RestartLevel()
     {
-        if (levels.Count > 0) enemySpawner.SetLevel(levels[0]);
+        Debug.Log("Restart Level");
+        SetSpawnerLevel(0);
+    }
+    private void SetSpawnerLevel(int level)
+    {
+        if (levels.Count > 0) enemySpawner.SetLevel(levels[level]);
         else Debug.LogError("Forgot to assign levels to LevelController");
 	}
 

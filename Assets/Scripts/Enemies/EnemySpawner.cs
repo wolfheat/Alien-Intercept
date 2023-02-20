@@ -7,7 +7,8 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public enum EnemyType{EnemyA,EnemyB,AnimatedA,AnimatedB}
-public enum EnemyMovement{AnimationA,AnimationB,AnimationC,AnimationD}
+public enum EnemyMovement{ StraightDownSlow,AnimationA,AnimationB,AnimationC,AnimationD}
+public enum EnemyShooting {none,A,B,C,D}
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] GameObject enemyParent;
     [SerializeField] List<GameObject> enemySubParents = new List<GameObject>();
 
+    [SerializeField] public GameObject levelHolder;
     public GameObject currentLevel = null;
     public List<EDefinitionPoint> currentLevelPoints;
 	List<EDefinitionPoint> pointsToRemove = new List<EDefinitionPoint>();
@@ -29,8 +31,8 @@ public class EnemySpawner : MonoBehaviour
 	private Coroutine spawn;
 
 	private void Start()
-    {
-    	Inputs.Instance.Controls.MainActionMap.G.performed += _ => SpawnByPlayerInput();// = _.ReadValue<float>();
+	{
+		Inputs.Instance.Controls.MainActionMap.G.performed += _ => SpawnByPlayerInput();// = _.ReadValue<float>();
 	}
 
     public void StartSpawnRoutine(int type)
@@ -54,19 +56,34 @@ public class EnemySpawner : MonoBehaviour
                 pointsToRemove.Add(point);
             }
         }
-        foreach (var point in pointsToRemove)
+        for (int i = pointsToRemove.Count-1; i >= 0; i--)
         {
-            currentLevelPoints.Remove(point);
+            currentLevelPoints.Remove(pointsToRemove[i]);
+            pointsToRemove[i].gameObject.SetActive(false);
         }
+        pointsToRemove.Clear();
     }
 
     public void SetLevel(GameObject level)
     {
-        currentLevel = level;
+        Debug.Log("Set Level");
+        if (currentLevel != null) RemoveLastLevel();
+
+        currentLevel = Instantiate(level,levelHolder.transform);
         currentLevelPoints = new List<EDefinitionPoint>();
         currentLevelPoints = currentLevel.GetComponentsInChildren<EDefinitionPoint>().ToList();
 	}
-    
+
+    private void RemoveLastLevel()
+    {
+		foreach (EDefinitionPoint point in currentLevelPoints)
+		{
+            Destroy(point.gameObject);
+		}
+        Destroy(currentLevel.gameObject);
+        currentLevelPoints.Clear();
+	}
+
     private void SpawnByPlayerInput()
     {
         //spawn = StartCoroutine(Spawn(Random.Range(1,20), Random.Range(0.05f, 1f)));
