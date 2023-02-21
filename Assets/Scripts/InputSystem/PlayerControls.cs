@@ -37,6 +37,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""ESC"",
+                    ""type"": ""Button"",
+                    ""id"": ""024b33c9-6ac2-4e91-a7be-fbabb1ba6485"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""CTRL"",
                     ""type"": ""Button"",
                     ""id"": ""1ee17613-fb52-45e6-8e6e-e699db00387c"",
@@ -328,6 +337,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""R"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ce3ece00-9bf0-4910-8dd7-17a9e8fb5afb"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ESC"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -337,6 +357,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         // MainActionMap
         m_MainActionMap = asset.FindActionMap("MainActionMap", throwIfNotFound: true);
         m_MainActionMap_G = m_MainActionMap.FindAction("G", throwIfNotFound: true);
+        m_MainActionMap_ESC = m_MainActionMap.FindAction("ESC", throwIfNotFound: true);
         m_MainActionMap_CTRL = m_MainActionMap.FindAction("CTRL", throwIfNotFound: true);
         m_MainActionMap_Space = m_MainActionMap.FindAction("Space", throwIfNotFound: true);
         m_MainActionMap_X = m_MainActionMap.FindAction("X", throwIfNotFound: true);
@@ -411,6 +432,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_MainActionMap;
     private IMainActionMapActions m_MainActionMapActionsCallbackInterface;
     private readonly InputAction m_MainActionMap_G;
+    private readonly InputAction m_MainActionMap_ESC;
     private readonly InputAction m_MainActionMap_CTRL;
     private readonly InputAction m_MainActionMap_Space;
     private readonly InputAction m_MainActionMap_X;
@@ -430,6 +452,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         private @PlayerControls m_Wrapper;
         public MainActionMapActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @G => m_Wrapper.m_MainActionMap_G;
+        public InputAction @ESC => m_Wrapper.m_MainActionMap_ESC;
         public InputAction @CTRL => m_Wrapper.m_MainActionMap_CTRL;
         public InputAction @Space => m_Wrapper.m_MainActionMap_Space;
         public InputAction @X => m_Wrapper.m_MainActionMap_X;
@@ -456,6 +479,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @G.started -= m_Wrapper.m_MainActionMapActionsCallbackInterface.OnG;
                 @G.performed -= m_Wrapper.m_MainActionMapActionsCallbackInterface.OnG;
                 @G.canceled -= m_Wrapper.m_MainActionMapActionsCallbackInterface.OnG;
+                @ESC.started -= m_Wrapper.m_MainActionMapActionsCallbackInterface.OnESC;
+                @ESC.performed -= m_Wrapper.m_MainActionMapActionsCallbackInterface.OnESC;
+                @ESC.canceled -= m_Wrapper.m_MainActionMapActionsCallbackInterface.OnESC;
                 @CTRL.started -= m_Wrapper.m_MainActionMapActionsCallbackInterface.OnCTRL;
                 @CTRL.performed -= m_Wrapper.m_MainActionMapActionsCallbackInterface.OnCTRL;
                 @CTRL.canceled -= m_Wrapper.m_MainActionMapActionsCallbackInterface.OnCTRL;
@@ -505,6 +531,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @G.started += instance.OnG;
                 @G.performed += instance.OnG;
                 @G.canceled += instance.OnG;
+                @ESC.started += instance.OnESC;
+                @ESC.performed += instance.OnESC;
+                @ESC.canceled += instance.OnESC;
                 @CTRL.started += instance.OnCTRL;
                 @CTRL.performed += instance.OnCTRL;
                 @CTRL.canceled += instance.OnCTRL;
@@ -554,6 +583,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     public interface IMainActionMapActions
     {
         void OnG(InputAction.CallbackContext context);
+        void OnESC(InputAction.CallbackContext context);
         void OnCTRL(InputAction.CallbackContext context);
         void OnSpace(InputAction.CallbackContext context);
         void OnX(InputAction.CallbackContext context);

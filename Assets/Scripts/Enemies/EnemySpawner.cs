@@ -7,7 +7,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public enum EnemyType{EnemyA,EnemyB,AnimatedA,AnimatedB}
-public enum EnemyMovement{ StraightDownSlow,AnimationA,AnimationB,AnimationC,AnimationD}
+public enum EnemyMovement{ StraightDownSlow,DownRightDownA, DownRightDownB, DownRightDownC,DownLeftDownA, DownLeftDownB, DownLeftDownC, AnimationA,AnimationB,AnimationC,AnimationD}
 public enum EnemyShooting {none,A,B,C,D}
 
 public class EnemySpawner : MonoBehaviour

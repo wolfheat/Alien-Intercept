@@ -18,6 +18,8 @@ DEVLOG FOR - ALL BY AI - GAMEJAM
 		this makes it possible to move the enemys animation path by changing its parent.
 18/2	* Created a level design system for creating waves of enemies with scriptable objects 
 		and points that can be placed on the scene and their pos gives Xpos creation and time
+		* Added separate menu music and transition.
+		* Made ghost ship use a reference for what weapon its use
 
 		BUG
 		

@@ -1,8 +1,17 @@
 using System.Collections;
 using UnityEngine;
 
-public class PlayerGhostController : PlayerController
+public class PlayerGhostController : BaseController
 {
+	[SerializeField] private PlayerController ghostProfile;
+
+	protected override void OnEnable()
+	{
+		useBullets = ghostProfile.UsingBullets;
+		useRockets = ghostProfile.UsingRockets;
+		base.OnEnable();
+	}
+
 	public IEnumerator RemoveGhostAfter(float removeTime)
 	{
 		Debug.Log("Destroy Ghost Timer Set");

@@ -1,5 +1,7 @@
 using UnityEngine;
 
+public enum MusicType{Menu,Normal,Boss}
+
 public class SoundController : MonoBehaviour
 {
     [SerializeField] private AudioClip[] menu;
@@ -19,7 +21,10 @@ public class SoundController : MonoBehaviour
     private bool doingFadeout = false;
     private int currentEncounterMusic = 0;
 
-    private float presetVolume = 0.8f;
+    public MusicType activeMusic = MusicType.Menu;
+
+
+	private float presetVolume = 0.8f;
     private float presetSFXVolume = 0.1f;
     private float presetSFXStepVolume = 0.5f;
 
@@ -55,6 +60,11 @@ public class SoundController : MonoBehaviour
         Inputs.Instance.Controls.MainActionMap.MusicToggle.performed += _ => MuteToggle();// = _.ReadValue<float>();
 	}
 
+    public void SetMusicType(MusicType t)
+    {
+        activeMusic = t;
+        DoMusicSetting();
+    }
     public void UseMusic(bool use)
     {
         doPlayMusic = use;
@@ -108,7 +118,8 @@ public class SoundController : MonoBehaviour
 	{
         if (doPlayMusic)
         {
-            musicSource.clip = music[0];
+            if ((int)activeMusic >= music.Length) { Debug.LogError("To few Music files assigned to SoundController"); return;}
+            musicSource.clip = music[(int)activeMusic];
             musicSource.Play();
         }
         else musicSource.Stop(); 

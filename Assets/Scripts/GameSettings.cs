@@ -8,12 +8,13 @@ public class GameSettings : MonoBehaviour
 	public static float GameScale { get; private set; }
 
 	public static bool UseMusic { get; private set; } = true;
+	public static bool IsPaused { get; set; }
 	
 	[SerializeField] bool useMusicSetting;
 
 
 	private void Awake()
-	{	
+	{
 		// Set Screenheight from reading of ortoghonal camera
 		ScreenHeight = Camera.main.orthographicSize*2;
 		ScreenWidth = ScreenHeight * ((float)Screen.width/ (float)Screen.height);
