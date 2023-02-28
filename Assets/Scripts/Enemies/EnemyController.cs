@@ -18,6 +18,7 @@ public class EnemyController : Movement
 	public void Die()
 	{
 		ParticleSystemController.Instance.PlayParticleAt(ParticleType.EnemyBlowUpA,transform);
+		SoundController.Instance.PlaySFX(SFX.ShipDestroyedA);
 		gameObject.SetActive(false);
 	}
     

@@ -8,7 +8,7 @@ public class GameSettings : MonoBehaviour
 	public static float GameScale { get; private set; }
 
 	public static bool UseMusic { get; private set; } = true;
-	public static bool IsPaused { get; set; }
+	public static bool IsPaused { get; set; } = true;
 	
 	[SerializeField] bool useMusicSetting;
 

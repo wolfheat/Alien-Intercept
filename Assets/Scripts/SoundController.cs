@@ -2,6 +2,8 @@ using UnityEngine;
 
 public enum MusicType{Menu,Normal,Boss}
 
+public enum SFX { ShipDestroyedA, GetHit, PlayerDeath, MenuStep, MenuSelect, MenuError }
+
 public class SoundController : MonoBehaviour
 {
     [SerializeField] private AudioClip[] menu;
@@ -22,7 +24,7 @@ public class SoundController : MonoBehaviour
     private int currentEncounterMusic = 0;
 
     public MusicType activeMusic = MusicType.Menu;
-
+    public static SoundController Instance { get; set; }
 
 	private float presetVolume = 0.8f;
     private float presetSFXVolume = 0.1f;
@@ -34,6 +36,9 @@ public class SoundController : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null) { Destroy(this.gameObject); return;}
+        else Instance = this;
+
         GameObject musicSourceHolder = new GameObject("Music");
         GameObject sfxSourceHolder = new GameObject("SFX");
         musicSourceHolder.transform.SetParent(this.transform);
@@ -134,8 +139,6 @@ public class SoundController : MonoBehaviour
         else musicSourceIntense.Stop(); 
 	}
 
-    public enum SFX {Footstep,GetHit,SwingSword,SwingSwordMiss,SwordHit,ShootArrow, Grunt,Yeah,PlayerDeath,MenuStep,MenuSelect,MenuError, Gather }
-
 
     public void StopStepSFX()
     {
@@ -162,29 +165,8 @@ public class SoundController : MonoBehaviour
 
         switch (type)
 		{
-            case SFX.Footstep: 
-                sfxSource.PlayOneShot(footstep[Random.Range(0,footstep.Length)]);
-                break;
-            case SFX.Gather: 
-                sfxSource.PlayOneShot(sfx[2]);
-                break;
-            case SFX.SwingSword: 
+            case SFX.ShipDestroyedA:
                 sfxSource.PlayOneShot(sfx[0]);
-                break;
-            case SFX.SwordHit: 
-                sfxSource.PlayOneShot(swordHits[0]);
-                break;
-            case SFX.SwingSwordMiss: 
-                sfxSource.PlayOneShot(sfx[1]);
-                break;
-            case SFX.ShootArrow: 
-                sfxSource.PlayOneShot(sfx[1]);
-                break;
-            case SFX.Grunt: 
-                sfxSource.PlayOneShot(grunts[0]);
-                break;
-            case SFX.Yeah: 
-                sfxSource.PlayOneShot(grunts[3]);
                 break;
             case SFX.PlayerDeath: 
                 sfxSource.PlayOneShot(grunts[4]);

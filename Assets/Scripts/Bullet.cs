@@ -5,12 +5,17 @@ public class Bullet : MonoBehaviour
 {
     private float speed = 8f;
     private float lifeTime = 2f;
+    private const float STARTLIFE = 2f;
     private float outOfBoundsY = 2f;
     float screenHeight;
-
+    public GenericPool<Bullet> Pool { get; set; }
     public int Damage { get {return damage;}}
     [SerializeField] private int damage = 10;
 
+    private void OnEnable()
+    {
+        lifeTime = STARTLIFE;
+    }
     private void Update()
     {
         // Move forward
@@ -43,7 +48,8 @@ public class Bullet : MonoBehaviour
     public void Die()
 	{
 		//Destroy(gameObject);
-		gameObject.SetActive(false);
+		//gameObject.SetActive(false);
+        Pool.ReturnToPool(this);
     }
 
     private void Move()

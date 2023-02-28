@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4591288775169219475}
   - component: {fileID: 4591288775169219472}
+  - component: {fileID: 700422833}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -46,7 +47,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 2264840306070413783, guid: 42d918a2a6d864f4eb5aa9ab7e46b495, type: 3}
-  bulletHolder: {fileID: 0}
   rocketPrefab: {fileID: 2264840306070413783, guid: 913869e631b1bb345b3aeccd1ed12e96, type: 3}
   bulletCreationPositions:
   - {fileID: 4420512001297713995}
@@ -54,6 +54,24 @@ MonoBehaviour:
   - {fileID: 2866991099439058198}
   - {fileID: 2866991099558519439}
   - {fileID: 2866991099333977468}
+  rocketCreationPositions:
+  - {fileID: 2866991099558519439}
+  - {fileID: 2866991099333977468}
+  rocketPool: {fileID: 0}
+  bulletPool: {fileID: 0}
+--- !u!114 &700422833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4591288775169219474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9104ce69be088da4497b4b8dcf47a586, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghost: {fileID: 0}
 --- !u!1 &4591288776272391013
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,9 +147,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1670665891
+  m_SortingLayer: 3
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 41316da47f161ef448fe96ed86ce433e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

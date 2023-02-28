@@ -5,6 +5,7 @@ public class PlayerGhostController : BaseController
 {
 	[SerializeField] private PlayerController ghostProfile;
 
+
 	protected override void OnEnable()
 	{
 		useBullets = ghostProfile.UsingBullets;
@@ -14,9 +15,7 @@ public class PlayerGhostController : BaseController
 
 	public IEnumerator RemoveGhostAfter(float removeTime)
 	{
-		Debug.Log("Destroy Ghost Timer Set");
 		yield return new WaitForSeconds(removeTime);
-		Debug.Log("Inactivate Ghost");
 		transform.gameObject.SetActive(false);
 	}
 

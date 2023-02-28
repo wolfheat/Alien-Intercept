@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Net.Sockets;
 using UnityEngine;
 
 public abstract class BaseController : MonoBehaviour
 {
+
 	[SerializeField] GameObject bulletPrefab;
-	[SerializeField] GameObject bulletHolder;
 	[SerializeField] GameObject rocketPrefab;
 	[SerializeField] List<BulletCreationPosition> bulletCreationPositions;
+	[SerializeField] List<BulletCreationPosition> rocketCreationPositions;
+	[SerializeField] protected RocketPool rocketPool;
+	[SerializeField] protected BulletPool bulletPool;
 
 	private float bulletCreationTime = 0.1f;
 	private float rocketCreationTime = 0.5f;
@@ -24,9 +26,8 @@ public abstract class BaseController : MonoBehaviour
 
 	protected virtual void OnEnable()
 	{
-		if (useBullets) bullets = StartCoroutine(AutoBulletSpawner());
-		if (useRockets) rockets = StartCoroutine(AutoRocketSpawner());
-		Debug.Log("Base controller class, usebullets: "+useBullets);
+		if (useBullets) bullets = StartCoroutine(AutoSpawner(bulletPool, bulletCreationPositions,bulletCreationTime));
+		if (useRockets) rockets = StartCoroutine(AutoSpawner(rocketPool, rocketCreationPositions, rocketCreationTime));
 	}
 
 	protected virtual void OnDisable()
@@ -41,30 +42,28 @@ public abstract class BaseController : MonoBehaviour
 		if (useRockets)
 		{
 			if (rockets != null) StopCoroutine(rockets);
-			rockets = StartCoroutine(AutoRocketSpawner());
+			rockets = StartCoroutine(AutoSpawner(rocketPool, rocketCreationPositions, rocketCreationTime));	
 		}
 		else if(rockets != null)StopCoroutine(rockets);
 	}
 
-	protected IEnumerator AutoBulletSpawner()
+	protected IEnumerator AutoSpawner(GenericPool<Bullet> pool, List<BulletCreationPosition> list, float time)
 	{
-		while (useBullets == true)
+		while (true)
 		{
-			yield return new WaitForSeconds(bulletCreationTime);
-			foreach (BulletCreationPosition pos in bulletCreationPositions)
-				Instantiate(bulletPrefab, pos.transform.position, pos.transform.rotation, bulletHolder.transform);
+			yield return new WaitForSeconds(time);
+			if(GameSettings.IsPaused)continue;
+			foreach (BulletCreationPosition pos in list)
+			{
+				Bullet newBullet = pool.Get();
+				newBullet.Pool = pool;
+				newBullet.transform.position = pos.transform.position;
+				newBullet.transform.rotation = pos.transform.rotation;
+				newBullet.transform.parent = pool.gameObject.transform;
+			}
 		}
 	}
-
-	protected IEnumerator AutoRocketSpawner()
-	{
-		while (useRockets == true)
-		{
-			yield return new WaitForSeconds(rocketCreationTime);
-			foreach (BulletCreationPosition pos in bulletCreationPositions)
-				if (pos.rocket) Instantiate(rocketPrefab, pos.transform.position, pos.transform.rotation, bulletHolder.transform);
-		}
-	}
+	
 	private void Update()
 	{
 		if (GameSettings.IsPaused) return;

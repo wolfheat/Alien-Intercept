@@ -20,6 +20,9 @@ DEVLOG FOR - ALL BY AI - GAMEJAM
 		and points that can be placed on the scene and their pos gives Xpos creation and time
 		* Added separate menu music and transition.
 		* Made ghost ship use a reference for what weapon its use
+28/2	* Added Generic Pooling system for bullets and Rockets
+		* Stores around 95 bullets each for player and ghost, and 8 rockets
+
 
 		BUG
 		
