@@ -22,6 +22,7 @@ DEVLOG FOR - ALL BY AI - GAMEJAM
 		* Made ghost ship use a reference for what weapon its use
 28/2	* Added Generic Pooling system for bullets and Rockets
 		* Stores around 95 bullets each for player and ghost, and 8 rockets
+		* Added a few soundeffects
 
 
 		BUG
@@ -30,7 +31,7 @@ DEVLOG FOR - ALL BY AI - GAMEJAM
 		* Make enemy genereation system for entire levels
 		* Make Boss and boss behaviour
 		* Add shake and other effects for death of enemy, effect for getting hit (red)
-		* Add game sound effects
+		* Add game sound effects (partly)
 		* Add health system for player
 		* Level progression bar? 
 		

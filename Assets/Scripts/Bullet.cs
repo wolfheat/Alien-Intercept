@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 
+enum BulletType{Bullet,Rocket}
+
 public class Bullet : MonoBehaviour
 {
     private float speed = 8f;
@@ -8,6 +10,7 @@ public class Bullet : MonoBehaviour
     private const float STARTLIFE = 2f;
     private float outOfBoundsY = 2f;
     float screenHeight;
+    [SerializeField] private BulletType type;
     public GenericPool<Bullet> Pool { get; set; }
     public int Damage { get {return damage;}}
     [SerializeField] private int damage = 10;
@@ -15,6 +18,7 @@ public class Bullet : MonoBehaviour
     private void OnEnable()
     {
         lifeTime = STARTLIFE;
+        if(type is BulletType.Rocket)SoundController.Instance.PlaySFX(SFX.FireRocket);
     }
     private void Update()
     {

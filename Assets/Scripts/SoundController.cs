@@ -2,18 +2,13 @@ using UnityEngine;
 
 public enum MusicType{Menu,Normal,Boss}
 
-public enum SFX { ShipDestroyedA, GetHit, PlayerDeath, MenuStep, MenuSelect, MenuError }
+public enum SFX { ShipDestroyedA, GetHit, PlayerDeath, MenuStep, MenuSelect, MenuError, FireRocket, FireBullet }
 
 public class SoundController : MonoBehaviour
 {
     [SerializeField] private AudioClip[] menu;
     [SerializeField] private AudioClip[] sfx;
-    [SerializeField] private AudioClip[] swordHits;
-    [SerializeField] private AudioClip[] grunts;
     [SerializeField] private AudioClip[] music;
-    [SerializeField] private AudioClip[] musicIntense;
-    [SerializeField] private AudioClip[] enemysxf;
-    [SerializeField] private AudioClip[] footstep;
 
     private AudioSource musicSource;
     private AudioSource musicSourceIntense;
@@ -129,26 +124,6 @@ public class SoundController : MonoBehaviour
         }
         else musicSource.Stop(); 
 	}
-    private void PlayMusicIntense()
-	{
-        if (doPlayMusic)
-        {
-            musicSourceIntense.clip = musicIntense[currentEncounterMusic];
-            musicSourceIntense.Play();
-        }
-        else musicSourceIntense.Stop(); 
-	}
-
-
-    public void StopStepSFX()
-    {
-		sfxSource.Stop();
-	}
-
-    public void PlayStepSFX()
-    {
-		sfxSource.PlayOneShot(footstep[Random.Range(0, footstep.Length)]);
-	}
 
     public void StopSFX()
     {
@@ -168,8 +143,8 @@ public class SoundController : MonoBehaviour
             case SFX.ShipDestroyedA:
                 sfxSource.PlayOneShot(sfx[0]);
                 break;
-            case SFX.PlayerDeath: 
-                sfxSource.PlayOneShot(grunts[4]);
+			case SFX.FireRocket:
+                sfxSource.PlayOneShot(sfx[1]);
                 break;
 			case SFX.MenuStep:
                 sfxSource.PlayOneShot(menu[0]);

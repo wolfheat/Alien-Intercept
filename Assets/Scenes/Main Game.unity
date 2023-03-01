@@ -4901,16 +4901,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menu: []
   sfx:
-  - {fileID: 8300000, guid: 75e8eec7c39c7dd468f2b9eb6224e564, type: 3}
+  - {fileID: 8300000, guid: d41f43171291a764295a7f3d54034750, type: 3}
+  - {fileID: 8300000, guid: b2b970d6bf1f2ed419b5b9bff12e0a9b, type: 3}
   - {fileID: 8300000, guid: 2d972b78f5b84d948b4cc86729cc1f9f, type: 3}
-  swordHits: []
-  grunts: []
+  - {fileID: 8300000, guid: 75e8eec7c39c7dd468f2b9eb6224e564, type: 3}
   music:
   - {fileID: 8300000, guid: 565eac60a3d515342b1b3ffd069b13f0, type: 3}
   - {fileID: 8300000, guid: 4d7f23f24b631d648859803a815b89b3, type: 3}
-  musicIntense: []
-  enemysxf: []
-  footstep: []
   activeMusic: 0
 --- !u!4 &2024780881
 Transform:
