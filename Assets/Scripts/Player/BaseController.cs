@@ -76,8 +76,6 @@ public abstract class BaseController : MonoBehaviour
 
 	public void GettingHit()
 	{
-		Debug.Log("GETTIGN HIT");
-		Debug.Log("Flash Effect: "+flashEffect);
 		if (flashEffect != null)
 			flashEffect.DoSimpleFlash();
 	}

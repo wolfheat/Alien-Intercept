@@ -14,7 +14,7 @@ DEVLOG FOR - ALL BY AI - GAMEJAM
 		* Changed to HDR Pipeline
 		* Added some lightening effects, darkened background highligt units
 		* Decided on a solution for the enemy creation. Using animation
-		and having 11 slots where the animation can origin from the top
+		and having 12 slots where the animation can origin from the top
 		this makes it possible to move the enemys animation path by changing its parent.
 18/2	* Created a level design system for creating waves of enemies with scriptable objects 
 		and points that can be placed on the scene and their pos gives Xpos creation and time
@@ -25,6 +25,7 @@ DEVLOG FOR - ALL BY AI - GAMEJAM
 		* Added a few soundeffects
 1/3		* Added Crosshair that the player moves towards instead of teleporting to.		
 		* Added Getting Hit effect that flashes player as white for a brief time.
+		* Added simple Pause Screen overlay UI
 
 		BUG
 		

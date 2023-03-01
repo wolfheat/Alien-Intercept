@@ -8,6 +8,7 @@ public class LevelController : MonoBehaviour
     [SerializeField] BackgroundController backgroundController;
     [SerializeField] EnemySpawner enemySpawner;
     [SerializeField] SoundController soundController;
+    [SerializeField] GameObject pausedScreen;
 	[SerializeField] List<GameObject> levels = new List<GameObject>();
 
 	private void Start()
@@ -41,6 +42,7 @@ public class LevelController : MonoBehaviour
         GameSettings.IsPaused = p;
         Time.timeScale = p ? 0 : 1;
 		Cursor.visible = p;
+        pausedScreen.gameObject.SetActive(p);
 	}
     private void RestartLevel()
     {
