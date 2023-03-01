@@ -14,12 +14,14 @@ public abstract class BaseController : MonoBehaviour
 
 	private float bulletCreationTime = 0.1f;
 	private float rocketCreationTime = 0.5f;
+	
 
 	protected bool useBullets = false;
 	protected bool useRockets = false;
 
 	public bool UsingBullets { get { return useBullets; } }
 	public bool UsingRockets { get { return useRockets; } }
+	public float Speed { get; set; } = 25f;
 
 	protected Coroutine bullets;
 	protected Coroutine rockets;

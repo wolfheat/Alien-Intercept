@@ -7,9 +7,12 @@ using UnityEngine.UI;
 
 public class PlayerController : BaseController
 {
-    private Vector2 XLimits = new Vector2(0.05f,.95f);
-    private Vector2 YLimits = new Vector2(0.05f,.9f);
+    private Crosshair crosshair;
 
+    private void Start()
+    {
+		crosshair = FindObjectOfType<Crosshair>();
+    }
     protected override void OnEnable()
     {
         useBullets = true;
@@ -32,13 +35,7 @@ public class PlayerController : BaseController
 
     public override void SetUnitPosition()
     {
-        // Get Mouse Position
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-        Vector3 worldPositionClamped = new Vector2(
-            Mathf.Clamp(worldPosition.x,GameSettings.ScreenWidth *XLimits.x, GameSettings.ScreenWidth * XLimits.y), 
-            Mathf.Clamp(worldPosition.y,GameSettings.ScreenHeight*YLimits.x, GameSettings.ScreenHeight* YLimits.y)
-            );        
-        transform.position = worldPositionClamped;   
-
+        // Move Towards Cursor
+        transform.position = Vector3.MoveTowards(transform.position, crosshair.transform.position, Speed*Time.deltaTime);
     }
 }
