@@ -41,7 +41,6 @@ public class LevelController : MonoBehaviour
         GameSettings.IsPaused = p;
         Time.timeScale = p ? 0 : 1;
 		Cursor.visible = p;
-        Debug.Log("Pause Level, cursor visable: "+Cursor.visible);
 	}
     private void RestartLevel()
     {

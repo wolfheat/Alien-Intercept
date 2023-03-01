@@ -11,6 +11,7 @@ public abstract class BaseController : MonoBehaviour
 	[SerializeField] List<BulletCreationPosition> rocketCreationPositions;
 	[SerializeField] protected RocketPool rocketPool;
 	[SerializeField] protected BulletPool bulletPool;
+	[SerializeField] protected SimpleFlashEffect flashEffect;
 
 	private float bulletCreationTime = 0.1f;
 	private float rocketCreationTime = 0.5f;
@@ -25,6 +26,13 @@ public abstract class BaseController : MonoBehaviour
 
 	protected Coroutine bullets;
 	protected Coroutine rockets;
+
+
+	private void OnCollisionEnter2D(Collision2D collision)
+	{		
+		if(collision.gameObject.GetComponent<EnemyController>() != null)
+		GettingHit();
+	}
 
 	protected virtual void OnEnable()
 	{
@@ -65,7 +73,14 @@ public abstract class BaseController : MonoBehaviour
 			}
 		}
 	}
-	
+
+	public void GettingHit()
+	{
+		Debug.Log("GETTIGN HIT");
+		Debug.Log("Flash Effect: "+flashEffect);
+		if (flashEffect != null)
+			flashEffect.DoSimpleFlash();
+	}
 	private void Update()
 	{
 		if (GameSettings.IsPaused) return;

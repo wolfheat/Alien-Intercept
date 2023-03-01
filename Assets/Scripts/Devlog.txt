@@ -24,13 +24,13 @@ DEVLOG FOR - ALL BY AI - GAMEJAM
 		* Stores around 95 bullets each for player and ghost, and 8 rockets
 		* Added a few soundeffects
 1/3		* Added Crosshair that the player moves towards instead of teleporting to.		
+		* Added Getting Hit effect that flashes player as white for a brief time.
 
 		BUG
 		
 		TODO
 		* Make enemy genereation system for entire levels
 		* Make Boss and boss behaviour
-		* Add a positioner that the player Lerps towards instead of setting the position directly
 		* Add shake and other effects for death of enemy, effect for getting hit (red)
 		* Add game sound effects (partly)
 		* Add health system for player

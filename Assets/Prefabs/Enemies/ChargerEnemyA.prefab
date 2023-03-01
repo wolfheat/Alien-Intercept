@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 166614128576691324}
   - component: {fileID: 7680665141260231306}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BulletCreationPositionA (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 303460128560139886}
   - component: {fileID: 7849424004464447640}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BulletCreationPositionA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4309655063610326207}
   - component: {fileID: 5987010791556096585}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BulletCreationPositionA (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6123876060246667839}
   - component: {fileID: 4333793519174954185}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BulletCreationPositionA (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -346,7 +346,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7683156780704251545}
   - component: {fileID: 178125869088759919}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BulletCreationPositionA (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -430,7 +430,7 @@ GameObject:
   m_Component:
   - component: {fileID: 890255138626177257}
   - component: {fileID: 5233277975022499869}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: shipA (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -521,7 +521,7 @@ GameObject:
   - component: {fileID: 3016111531746987042}
   - component: {fileID: 372013455352263437}
   - component: {fileID: 263425994884758816}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ChargerEnemyA
   m_TagString: Untagged
   m_Icon: {fileID: 0}

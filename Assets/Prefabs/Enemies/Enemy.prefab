@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7745588912873641805}
   - component: {fileID: 3424803725189408697}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: shipA (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   m_Component:
   - component: {fileID: 974747992169685309}
   - component: {fileID: 7304797673701900235}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BulletCreationPositionA (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 2960453419549492039}
   - component: {fileID: 7188444875592342257}
   - component: {fileID: 7470581418749954270}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5241607678296263427}
   - component: {fileID: 1539611609087037589}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,7 +378,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3736701898351930779}
   - component: {fileID: 6558283937404040045}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BulletCreationPositionA (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,7 +462,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6695153017881813787}
   - component: {fileID: 3760836473418399213}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BulletCreationPositionA (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -546,7 +546,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7138510119848661450}
   - component: {fileID: 849438478285999932}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BulletCreationPositionA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -630,7 +630,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7307337691791746008}
   - component: {fileID: 986352091792719150}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BulletCreationPositionA (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -5317,9 +5317,21 @@ PrefabInstance:
       propertyPath: ghostProfile
       value: 
       objectReference: {fileID: 700422834}
+    - target: {fileID: 7854909107093629561, guid: 95df90c9a3db7e0429d2db4ab2d75920, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7854909107550962017, guid: 95df90c9a3db7e0429d2db4ab2d75920, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7854909108121295502, guid: 95df90c9a3db7e0429d2db4ab2d75920, type: 3}
       propertyPath: m_Name
       value: PlayerGhost
+      objectReference: {fileID: 0}
+    - target: {fileID: 7854909108121295502, guid: 95df90c9a3db7e0429d2db4ab2d75920, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7854909108121295502, guid: 95df90c9a3db7e0429d2db4ab2d75920, type: 3}
       propertyPath: m_IsActive
@@ -5368,6 +5380,22 @@ PrefabInstance:
     - target: {fileID: 7854909108121295503, guid: 95df90c9a3db7e0429d2db4ab2d75920, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616361622853342073, guid: 95df90c9a3db7e0429d2db4ab2d75920, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616361623788973910, guid: 95df90c9a3db7e0429d2db4ab2d75920, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616361623893329724, guid: 95df90c9a3db7e0429d2db4ab2d75920, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616361624008763557, guid: 95df90c9a3db7e0429d2db4ab2d75920, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
