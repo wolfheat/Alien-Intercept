@@ -26,6 +26,8 @@ DEVLOG FOR - ALL BY AI - GAMEJAM
 1/3		* Added Crosshair that the player moves towards instead of teleporting to.		
 		* Added Getting Hit effect that flashes player as white for a brief time.
 		* Added simple Pause Screen overlay UI
+2/3		* Added option to stop shooting, currently using X
+		* Created option to create Waves of enemies in the Level editor.
 
 		BUG
 		

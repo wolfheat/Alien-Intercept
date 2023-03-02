@@ -9,6 +9,7 @@ public class GameSettings : MonoBehaviour
 
 	public static bool UseMusic { get; private set; } = true;
 	public static bool IsPaused { get; set; } = true;
+	public static bool CanShoot { get; set; } = true;
 	
 	[SerializeField] bool useMusicSetting;
 
@@ -19,7 +20,9 @@ public class GameSettings : MonoBehaviour
 		ScreenHeight = Camera.main.orthographicSize*2;
 		ScreenWidth = ScreenHeight * ((float)Screen.width/ (float)Screen.height);
 		AspectRatio = ScreenWidth/ScreenHeight;
-		GameScale = ScreenHeight/ Screen.height;		
+		GameScale = ScreenHeight/ Screen.height;
+
+		Inputs.Instance.Controls.MainActionMap.X.performed += _ => CanShoot = !CanShoot;
 	}
 
 	private void Update()

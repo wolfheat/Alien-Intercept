@@ -62,7 +62,7 @@ public abstract class BaseController : MonoBehaviour
 		while (true)
 		{
 			yield return new WaitForSeconds(time);
-			if(GameSettings.IsPaused)continue;
+			if(GameSettings.IsPaused || !GameSettings.CanShoot)continue;
 			foreach (BulletCreationPosition pos in list)
 			{
 				Bullet newBullet = pool.Get();
