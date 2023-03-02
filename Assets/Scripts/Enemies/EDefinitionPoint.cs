@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class EDefinitionPoint : MonoBehaviour
 {
-	public EnemyDefinitionSO definition;
+	public BaseEnemyDefinitionSO definition;
 }

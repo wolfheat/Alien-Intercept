@@ -7,12 +7,15 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public enum EnemyType{EnemyA,EnemyB,AnimatedA,AnimatedB}
+public enum BossType{BossA,BossB,BossC,BossD}
+public enum BossMovement{ BossAInit,BossBInit}
 public enum EnemyMovement{ StraightDownSlow,DownRightDownA, DownRightDownB, DownRightDownC,DownLeftDownA, DownLeftDownB, DownLeftDownC, AnimationA,AnimationB,AnimationC,AnimationD}
 public enum EnemyShooting {none,A,B,C,D}
 
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] List<EnemyController> enemies;
+    [SerializeField] List<EnemyController> bosses;
     [SerializeField] GameObject enemyParent;
     [SerializeField] List<GameObject> enemySubParents = new List<GameObject>();
 
@@ -93,18 +96,34 @@ public class EnemySpawner : MonoBehaviour
 
 	private IEnumerator SpawnPointData(EDefinitionPoint p)
     {
-        
-		EnemyDefinitionSO enemyDefinition = p.definition;
-        int createdAmount = 0;
-        while (createdAmount < enemyDefinition.unitsAmount)
+        if(p.definition is EnemyDefinitionSO)
         {
-            int positionID = Mathf.RoundToInt(p.transform.localPosition.x)+1;
-			SpawnOneAt(enemyDefinition.type, positionID, enemyDefinition.movement);
-			yield return new WaitForSeconds((float)enemyDefinition.timer);
-            createdAmount++;       
-        }
-    }
 
+            EnemyDefinitionSO enemyDefinition = p.definition as EnemyDefinitionSO;
+            int createdAmount = 0;
+            while (createdAmount < enemyDefinition.unitsAmount)
+            {
+                int positionID = Mathf.RoundToInt(p.transform.localPosition.x)+1;
+			    SpawnOneAt(enemyDefinition.type, positionID, enemyDefinition.movement);
+			    yield return new WaitForSeconds((float)enemyDefinition.timer);
+                createdAmount++;       
+            }
+        }
+        else if(p.definition is BossDefinitionSO)
+        {
+			BossDefinitionSO enemyDefinition = p.definition as BossDefinitionSO; 
+            int positionID = Mathf.RoundToInt(p.transform.localPosition.x) + 1;
+			SpawnOneBossAt(enemyDefinition.type, positionID, enemyDefinition.movement);
+
+		}
+	}
+
+    private void SpawnOneBossAt(BossType type, int posID, BossMovement movement)
+    {
+        EnemyController newEnemy = Instantiate(bosses[(int)type], enemySubParents[posID].transform);
+        //Debug.Log("Spawning an Enemy of type: "+type+" at pos: "+posID+" using Animation: "+movement.ToString());
+        newEnemy.GetComponent<Animator>().Play(movement.ToString());
+	}
     private void SpawnOneAt(EnemyType type, int posID, EnemyMovement movement)
     {
         EnemyController newEnemy = Instantiate(enemies[(int)type], enemySubParents[posID].transform);

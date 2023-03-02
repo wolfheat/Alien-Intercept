@@ -28,6 +28,7 @@ DEVLOG FOR - ALL BY AI - GAMEJAM
 		* Added simple Pause Screen overlay UI
 2/3		* Added option to stop shooting, currently using X
 		* Created option to create Waves of enemies in the Level editor.
+		* Created First Boss, added special SO for bosses and made looping animation for it
 
 		BUG
 		
