@@ -33,12 +33,17 @@ DEVLOG FOR - ALL BY AI - GAMEJAM
 		BUG
 		
 		TODO
-		* Make enemy genereation system for entire levels
-		* Make Boss and boss behaviour
+		* Make light baked? check if possible or other solution
+		* Make other explosion for killing bosses
+		* Have separate boss music
+		* End level in nice fashion and make transition to next level
+
 		* Add shake and other effects for death of enemy, effect for getting hit (red)
+		* Make enemy genereation system for entire levels
 		* Add game sound effects (partly)
 		* Add health system for player
 		* Level progression bar? 
+		* Make More Bosses and boss behaviours
 		
 		FEATURES DONE
 		* Did some compressing of music file for lower size
