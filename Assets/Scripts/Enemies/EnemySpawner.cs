@@ -54,7 +54,6 @@ public class EnemySpawner : MonoBehaviour
             point.transform.position += Vector3.down * Time.deltaTime;
             if (point.transform.position.y <= 0f)
             {
-
                 StartCoroutine(SpawnPointData(point));
                 pointsToRemove.Add(point);
             }
@@ -65,6 +64,8 @@ public class EnemySpawner : MonoBehaviour
             pointsToRemove[i].gameObject.SetActive(false);
         }
         pointsToRemove.Clear();
+
+        UIHud.Instance.SetEnemiesRemaining(currentLevelPoints.Count,FindObjectsOfType<EnemyController>().ToArray().Length);
     }
 
     public void SetLevel(GameObject level)

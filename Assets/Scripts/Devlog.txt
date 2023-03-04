@@ -29,12 +29,14 @@ DEVLOG FOR - ALL BY AI - GAMEJAM
 2/3		* Added option to stop shooting, currently using X
 		* Created option to create Waves of enemies in the Level editor.
 		* Created First Boss, added special SO for bosses and made looping animation for it
+3/3		* Added UI HUD text that shows remaining spawn points and active enemies.
 
 		BUG
 		
 		TODO
 		* Make light baked? check if possible or other solution
 		* Make other explosion for killing bosses
+		* Add enemy bullets
 		* Have separate boss music
 		* End level in nice fashion and make transition to next level
 
@@ -46,7 +48,7 @@ DEVLOG FOR - ALL BY AI - GAMEJAM
 		* Make More Bosses and boss behaviours
 		
 		FEATURES DONE
-		* Did some compressing of music file for lower size
+		* Did some compressing of music files
 		* Generic Pooling of Bullets
 		*
 		
