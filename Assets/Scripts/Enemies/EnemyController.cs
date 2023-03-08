@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class EnemyController : Movement
 {
-    private float health = 100;
-
-    private void OnTriggerEnter2D(Collider2D col)
+    private int health = 100;
+	public int Health { get { return health; } set {health = value;} }
+	private void OnTriggerEnter2D(Collider2D col)
     {
         if(col.gameObject.layer == LayerMask.NameToLayer("Bullets"))
         {

@@ -30,6 +30,9 @@ DEVLOG FOR - ALL BY AI - GAMEJAM
 		* Created option to create Waves of enemies in the Level editor.
 		* Created First Boss, added special SO for bosses and made looping animation for it
 3/3		* Added UI HUD text that shows remaining spawn points and active enemies.
+8/3		* Changed to having the parent of all points move instead of each point.
+		* Fixed issue where coroutines kept running when restarting.
+		* Updated so Boss have more health and adjustable in the SO
 
 		BUG
 		

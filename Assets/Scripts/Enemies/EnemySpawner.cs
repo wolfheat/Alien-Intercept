@@ -118,28 +118,29 @@ public class EnemySpawner : MonoBehaviour
 			    yield return new WaitForSeconds((float)enemyDefinition.timer);
                 createdAmount++;       
             }
-        }
+        } 
         else if(p.definition is BossDefinitionSO)
         {
 			BossDefinitionSO enemyDefinition = p.definition as BossDefinitionSO; 
             int positionID = Mathf.RoundToInt(p.transform.localPosition.x) + 1;
-			SpawnOneBossAt(enemyDefinition.type, positionID, enemyDefinition.movement);
+			SpawnOneBossAt(enemyDefinition.type, positionID, enemyDefinition.movement,enemyDefinition.health);
 
 		}
 		yield return new WaitForEndOfFrame();
 
 	}
 
-	private void SpawnOneBossAt(BossType type, int posID, BossMovement movement)
+    //TODO: Fix so its not repeated, move int one
+
+	private void SpawnOneBossAt(BossType type, int posID, BossMovement movement, int health)
     {
         EnemyController newEnemy = Instantiate(bosses[(int)type], enemySubParents[posID].transform);
-        //Debug.Log("Spawning an Enemy of type: "+type+" at pos: "+posID+" using Animation: "+movement.ToString());
+        newEnemy.Health = health;
         newEnemy.GetComponent<Animator>().Play(movement.ToString());
 	}
     private void SpawnOneAt(EnemyType type, int posID, EnemyMovement movement)
     {
         EnemyController newEnemy = Instantiate(enemies[(int)type], enemySubParents[posID].transform);
-        //Debug.Log("Spawning an Enemy of type: "+type+" at pos: "+posID+" using Animation: "+movement.ToString());
         newEnemy.GetComponent<Animator>().Play(movement.ToString());
 	}
 	private IEnumerator Spawn(int amt,float t)

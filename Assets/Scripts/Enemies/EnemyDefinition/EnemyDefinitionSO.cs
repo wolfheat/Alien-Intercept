@@ -16,5 +16,6 @@ public class EnemyDefinitionSO : BaseEnemyDefinitionSO
 }
 public class BaseEnemyDefinitionSO : ScriptableObject
 {
-		
+	[Range(0, 5000)] 
+	public int health = 100;	
 }
