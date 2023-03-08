@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -22,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] public GameObject levelHolder;
     public GameObject currentLevel = null;
     public List<EDefinitionPoint> currentLevelPoints;
-	List<EDefinitionPoint> pointsToRemove = new List<EDefinitionPoint>();
+	
 	//  0   1   2   3   4   5   6   7   8   9   10
 	//      |               *               |
 	/*
@@ -48,22 +49,22 @@ public class EnemySpawner : MonoBehaviour
     }
     private void RunLevel()
     {
-        
-        foreach(EDefinitionPoint point in currentLevelPoints)
+		List<EDefinitionPoint> pointsToRemove = new List<EDefinitionPoint>();
+
+        //Move the parent
+        levelHolder.transform.position += Vector3.down * Time.deltaTime;
+
+        for (int i = currentLevelPoints.Count-1; i >= 0; i--)
         {
-            point.transform.position += Vector3.down * Time.deltaTime;
+            EDefinitionPoint point = currentLevelPoints[i];
             if (point.transform.position.y <= 0f)
             {
-                StartCoroutine(SpawnPointData(point));
-                pointsToRemove.Add(point);
+                spawn = StartCoroutine(SpawnPointData(point));
+                //pointsToRemove.Add(point);
+                point.gameObject.SetActive(false);
+                currentLevelPoints.RemoveAt(i);
             }
         }
-        for (int i = pointsToRemove.Count-1; i >= 0; i--)
-        {
-            currentLevelPoints.Remove(pointsToRemove[i]);
-            pointsToRemove[i].gameObject.SetActive(false);
-        }
-        pointsToRemove.Clear();
 
         UIHud.Instance.SetEnemiesRemaining(currentLevelPoints.Count,FindObjectsOfType<EnemyController>().ToArray().Length);
     }
@@ -76,15 +77,20 @@ public class EnemySpawner : MonoBehaviour
         currentLevel = Instantiate(level,levelHolder.transform);
         currentLevelPoints = new List<EDefinitionPoint>();
         currentLevelPoints = currentLevel.GetComponentsInChildren<EDefinitionPoint>().ToList();
+        levelHolder.transform.position = new Vector3(levelHolder.transform.position.x, 0f, levelHolder.transform.position.z);  
 	}
 
     private void RemoveLastLevel()
     {
-		foreach (EDefinitionPoint point in currentLevelPoints)
-		{
-            Destroy(point.gameObject);
+        StopCoroutine(spawn);
+        spawn = null;
+        Debug.Log("Stopped Spawn CO");
+		for (int i = currentLevelPoints.Count - 1; i >= 0; i--)
+        {
+            Destroy(currentLevelPoints[i].gameObject);
 		}
         Destroy(currentLevel.gameObject);
+        currentLevel = null;
         currentLevelPoints.Clear();
 	}
 
@@ -96,15 +102,18 @@ public class EnemySpawner : MonoBehaviour
 	}
 
 	private IEnumerator SpawnPointData(EDefinitionPoint p)
-    {
-        if(p.definition is EnemyDefinitionSO)
+	{
+		Debug.Log("Start Spawn CO");
+		if (p.definition is EnemyDefinitionSO)
         {
 
             EnemyDefinitionSO enemyDefinition = p.definition as EnemyDefinitionSO;
             int createdAmount = 0;
-            while (createdAmount < enemyDefinition.unitsAmount)
-            {
-                int positionID = Mathf.RoundToInt(p.transform.localPosition.x)+1;
+            while (createdAmount < enemyDefinition.unitsAmount && spawn != null)
+			{
+				Debug.Log("Creating Unit: ");
+				Debug.Log("spawn: "+spawn);
+				int positionID = Mathf.RoundToInt(p.transform.localPosition.x)+1;
 			    SpawnOneAt(enemyDefinition.type, positionID, enemyDefinition.movement);
 			    yield return new WaitForSeconds((float)enemyDefinition.timer);
                 createdAmount++;       
@@ -117,9 +126,11 @@ public class EnemySpawner : MonoBehaviour
 			SpawnOneBossAt(enemyDefinition.type, positionID, enemyDefinition.movement);
 
 		}
+		yield return new WaitForEndOfFrame();
+
 	}
 
-    private void SpawnOneBossAt(BossType type, int posID, BossMovement movement)
+	private void SpawnOneBossAt(BossType type, int posID, BossMovement movement)
     {
         EnemyController newEnemy = Instantiate(bosses[(int)type], enemySubParents[posID].transform);
         //Debug.Log("Spawning an Enemy of type: "+type+" at pos: "+posID+" using Animation: "+movement.ToString());

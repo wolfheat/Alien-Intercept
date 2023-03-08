@@ -51,7 +51,7 @@ public class LevelController : MonoBehaviour
     }
     private void SetSpawnerLevel(int level)
     {
-        if (levels.Count > 0) enemySpawner.SetLevel(levels[level]);
+        if (levels.Count > level) enemySpawner.SetLevel(levels[level]);
         else Debug.LogError("Forgot to assign levels to LevelController");
 	}
 
