@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class StartMenuInput : MonoBehaviour, IPointerClickHandler
+public class StartMenuInput : MonoBehaviour
 {
 	[SerializeField] private GameObject startMenu;
 	[SerializeField] private GameObject buttonHolder;	
@@ -15,8 +15,6 @@ public class StartMenuInput : MonoBehaviour, IPointerClickHandler
 	private void Start()
     {
 		levelController = FindObjectOfType<LevelController>();
-
-		//Inputs.Instance.Controls.MainActionMap.Space.performed += _ => ToggleStartMenu();// = _.ReadValue<float>();
 	}
 
 	private void ToggleStartMenu()
@@ -45,8 +43,5 @@ public class StartMenuInput : MonoBehaviour, IPointerClickHandler
 	{
 		Debug.Log("QuitGame Clicked");	
 	}
-	public void OnPointerClick(PointerEventData eventData)
-	{
-		Debug.Log("Something Clicked");
-	}
+
 }

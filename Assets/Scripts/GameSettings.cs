@@ -9,6 +9,7 @@ public class GameSettings : MonoBehaviour
 
 	public static bool UseMusic { get; private set; } = true;
 	public static bool IsPaused { get; set; } = true;
+	public static bool AtMenu { get; set; } = true;
 	public static bool CanShoot { get; set; } = true;
 	
 	[SerializeField] bool useMusicSetting;

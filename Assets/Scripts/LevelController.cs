@@ -11,6 +11,9 @@ public class LevelController : MonoBehaviour
     [SerializeField] GameObject pausedScreen;
 	[SerializeField] List<GameObject> levels = new List<GameObject>();
     [SerializeField] Transition transition;
+
+
+
 	private void Start()
     {
 		Inputs.Instance.Controls.MainActionMap.R.performed += _ => RestartLevel();// = _.ReadValue<float>();
@@ -34,7 +37,7 @@ public class LevelController : MonoBehaviour
 
         //UnPause
 		Pause(false);
-
+        GameSettings.AtMenu = false;
 	}
 
     private void Pause(bool p)
@@ -51,6 +54,7 @@ public class LevelController : MonoBehaviour
     }
     private void RestartLevel()
     {
+        if(GameSettings.AtMenu) return; // Do not restart the level if game has not started yet and player is at the menu
         Debug.Log("Restart Level");
         DoTransition();
 		SetSpawnerLevel(0);
