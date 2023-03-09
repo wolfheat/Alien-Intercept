@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b44c960fed3a5743b32aca5f67929df, type: 3}
   m_Name: BossA
   m_EditorClassIdentifier: 
-  health: 500
-  type: 0
+  type: {fileID: 0}
+  movementString: BossAInit
+  health: 5000
+  unitsAmount: 1
+  timer: 1
+  speed: 1
+  type3: 0
   movement: 0
   shooting: 0
-  speed: 1

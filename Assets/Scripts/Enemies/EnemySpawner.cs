@@ -104,6 +104,26 @@ public class EnemySpawner : MonoBehaviour
 	private IEnumerator SpawnPointData(EDefinitionPoint p)
 	{
 		Debug.Log("Start Spawn CO");
+
+
+		if (p.definition is BaseEnemyDefinitionSO)
+		{
+            var enemyDefinition = p.definition;
+			int createdAmount = 0;
+
+			while (createdAmount < enemyDefinition.unitsAmount && spawn != null)
+			{
+				Debug.Log("Creating Unit: ");
+				Debug.Log("spawn: " + spawn);
+				int positionID = Mathf.RoundToInt(p.transform.localPosition.x) + 1;
+                Transform positionTransform = enemySubParents[positionID].transform;
+				SpawnOneMob(enemyDefinition.type, positionTransform, enemyDefinition.movementString,enemyDefinition.health);
+				yield return new WaitForSeconds((float)enemyDefinition.timer);
+				createdAmount++;
+			}
+		}
+
+		/*
 		if (p.definition is EnemyDefinitionSO)
         {
 
@@ -126,12 +146,19 @@ public class EnemySpawner : MonoBehaviour
 			SpawnOneBossAt(enemyDefinition.type, positionID, enemyDefinition.movement,enemyDefinition.health);
 
 		}
+        */
 		yield return new WaitForEndOfFrame();
 
 	}
 
     //TODO: Fix so its not repeated, move int one
 
+	private void SpawnOneMob(EnemyController type, Transform trans, string movement, int health)
+    {
+        EnemyController newEnemy = Instantiate(type, trans);
+        newEnemy.Health = health;
+        newEnemy.GetComponent<Animator>().Play(movement);
+	}
 	private void SpawnOneBossAt(BossType type, int posID, BossMovement movement, int health)
     {
         EnemyController newEnemy = Instantiate(bosses[(int)type], enemySubParents[posID].transform);
