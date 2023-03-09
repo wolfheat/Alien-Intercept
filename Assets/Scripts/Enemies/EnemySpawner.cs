@@ -105,7 +105,7 @@ public class EnemySpawner : MonoBehaviour
 	{
 		Debug.Log("Start Spawn CO");
 
-
+        /*
 		if (p.definition is BaseEnemyDefinitionSO)
 		{
             var enemyDefinition = p.definition;
@@ -121,9 +121,9 @@ public class EnemySpawner : MonoBehaviour
 				yield return new WaitForSeconds((float)enemyDefinition.timer);
 				createdAmount++;
 			}
-		}
+		}*/
 
-		/*
+		
 		if (p.definition is EnemyDefinitionSO)
         {
 
@@ -131,8 +131,6 @@ public class EnemySpawner : MonoBehaviour
             int createdAmount = 0;
             while (createdAmount < enemyDefinition.unitsAmount && spawn != null)
 			{
-				Debug.Log("Creating Unit: ");
-				Debug.Log("spawn: "+spawn);
 				int positionID = Mathf.RoundToInt(p.transform.localPosition.x)+1;
 			    SpawnOneAt(enemyDefinition.type, positionID, enemyDefinition.movement);
 			    yield return new WaitForSeconds((float)enemyDefinition.timer);
@@ -146,7 +144,7 @@ public class EnemySpawner : MonoBehaviour
 			SpawnOneBossAt(enemyDefinition.type, positionID, enemyDefinition.movement,enemyDefinition.health);
 
 		}
-        */
+        
 		yield return new WaitForEndOfFrame();
 
 	}

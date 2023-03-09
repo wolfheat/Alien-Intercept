@@ -6,19 +6,12 @@ using UnityEngine;
 public class EnemyDefinitionSO : BaseEnemyDefinitionSO
 {
 	public readonly bool isBoss = false;
-	public EnemyType eType;
+	public EnemyType type;
 	public EnemyMovement movement;
 	public EnemyShooting shooting;
-	public EnemyDefinitionSO()
-	{
-		
-		movementString = movement.ToString();
-	}
 }
 public class BaseEnemyDefinitionSO : ScriptableObject
 {
-	public EnemyController type;
-	public string movementString;
 	[Range(0, 5000)] public int health = 100;	
 	[Range(1,10)] public int unitsAmount=1;	
 	[Range(1,10)] public float timer=1;	

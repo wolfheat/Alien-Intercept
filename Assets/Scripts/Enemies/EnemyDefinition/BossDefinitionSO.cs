@@ -6,14 +6,12 @@ using UnityEngine;
 public class BossDefinitionSO : BaseEnemyDefinitionSO
 {		
 		public readonly bool isBoss = true;
-		public BossType type3;
+		public BossType type;
 		public BossMovement movement;
 		public EnemyShooting shooting;
 
 	public BossDefinitionSO()
 	{
-		health = 500;
-		//type = EnemyController;
-		movementString = movement.ToString();
+		health = 500;		
 	}
 }

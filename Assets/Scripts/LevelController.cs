@@ -10,7 +10,7 @@ public class LevelController : MonoBehaviour
     [SerializeField] SoundController soundController;
     [SerializeField] GameObject pausedScreen;
 	[SerializeField] List<GameObject> levels = new List<GameObject>();
-
+    [SerializeField] Transition transition;
 	private void Start()
     {
 		Inputs.Instance.Controls.MainActionMap.R.performed += _ => RestartLevel();// = _.ReadValue<float>();
@@ -44,10 +44,16 @@ public class LevelController : MonoBehaviour
 		Cursor.visible = p;
         pausedScreen.gameObject.SetActive(p);
 	}
+
+    private void DoTransition()
+    {
+        transition.DoTransition();
+    }
     private void RestartLevel()
     {
         Debug.Log("Restart Level");
-        SetSpawnerLevel(0);
+        DoTransition();
+		SetSpawnerLevel(0);
     }
     private void SetSpawnerLevel(int level)
     {
