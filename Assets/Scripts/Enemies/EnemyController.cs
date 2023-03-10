@@ -17,9 +17,13 @@ public class EnemyController : Movement
 	}
 	public void Die()
 	{
+		//Spawn Star
+		PickUpSpawner.Instance.SpawnPickup(PickUpType.GoldStar,transform);
+
 		ParticleSystemController.Instance.PlayParticleAt(ParticleType.EnemyBlowUpA,transform);
 		SoundController.Instance.PlaySFX(SFX.ShipDestroyedA);
 		gameObject.SetActive(false);
+
 	}
     
 	public void JustRemove()

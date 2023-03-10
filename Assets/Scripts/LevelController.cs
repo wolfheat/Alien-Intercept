@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class LevelController : MonoBehaviour
@@ -11,6 +12,7 @@ public class LevelController : MonoBehaviour
     [SerializeField] SoundController soundController;
     [SerializeField] GameObject pausedScreen;
 	[SerializeField] List<GameObject> levels = new List<GameObject>();
+    private int currentLevel = 0;
     [SerializeField] Transition transition;
 
 
@@ -74,11 +76,30 @@ public class LevelController : MonoBehaviour
 		GameSettings.CurrentGameState = GameState.RunGame;
 		Debug.Log("Restart Level");
 	}
+
+    private void Update()
+    {
+		int enemiesRemaining = FindObjectsOfType<EnemyController>().ToArray().Length;
+		int pointsRemaining = enemySpawner.currentLevelPoints.Count;
+		UIHud.Instance.SetEnemiesRemaining(pointsRemaining, enemiesRemaining);
+
+		if (enemiesRemaining == 0 && pointsRemaining == 0 && GameSettings.CurrentGameState == GameState.RunGame) StartNextLevel();
+	}
+
+	private void StartNextLevel()
+    {
+        if(GameSettings.AtMenu) return; // Do not restart the level if game has not started yet and player is at the menu
+
+        currentLevel = (currentLevel + 1) % levels.Count;
+
+		StartCoroutine(DoTransitionThenSetLevel(currentLevel));
+        
+    }
 	private void RestartLevel()
     {
         if(GameSettings.AtMenu) return; // Do not restart the level if game has not started yet and player is at the menu
 
-		StartCoroutine(DoTransitionThenSetLevel(0));
+		StartCoroutine(DoTransitionThenSetLevel(currentLevel));
         
     }
     private void SetSpawnerLevel(int level)

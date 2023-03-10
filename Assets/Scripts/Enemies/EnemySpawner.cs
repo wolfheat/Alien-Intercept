@@ -61,23 +61,8 @@ public class EnemySpawner : MonoBehaviour
                 point.gameObject.SetActive(false);
                 currentLevelPoints.RemoveAt(i);
             }
-        }
-
-        int enemiesRemaining = FindObjectsOfType<EnemyController>().ToArray().Length;
-        int pointsRemaining = currentLevelPoints.Count;
-		UIHud.Instance.SetEnemiesRemaining(pointsRemaining,enemiesRemaining);
-
-        if (enemiesRemaining == 0 && pointsRemaining == 0) NextLevel();
-
+        }        
     }
-
-    private void NextLevel()
-    {
-        
-        Debug.Log("NEXT LEVEL");
-    }
-
-
 
     public void StopLevelSpawning()
     {
@@ -175,9 +160,7 @@ public class EnemySpawner : MonoBehaviour
 	}
     private void SpawnOneAt(EnemyType type, int posID, EnemyMovement movement)
     {
-        Debug.Log("Spawning one enemy of type "+ type+" at pos: "+posID);
         EnemyController newEnemy = Instantiate(enemies[(int)type], enemySubParents[posID].transform);
-        Debug.Log("Enemy enabled: "+newEnemy.gameObject.activeSelf);
         newEnemy.GetComponent<Animator>().Play(movement.ToString());
 	}
 

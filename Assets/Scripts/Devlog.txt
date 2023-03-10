@@ -33,6 +33,10 @@ DEVLOG FOR - ALL BY AI - GAMEJAM
 8/3		* Changed to having the parent of all points move instead of each point.
 		* Fixed issue where coroutines kept running when restarting.
 		* Updated so Boss have more health and adjustable in the SO
+10/3	* Transition now stops the game and hinders new enemies from spawning. 
+		* There is a fading effect and the enemies on screen are killed off one by one for a nice effect.
+
+
 
 		BUG
 		

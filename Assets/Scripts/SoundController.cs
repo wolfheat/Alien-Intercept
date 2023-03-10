@@ -2,12 +2,13 @@ using UnityEngine;
 
 public enum MusicType{Menu,Normal,Boss}
 
-public enum SFX { ShipDestroyedA, GetHit, PlayerDeath, MenuStep, MenuSelect, MenuError, FireRocket, FireBullet }
+public enum SFX { ShipDestroyedA, GetHit, PlayerDeath, MenuStep, MenuSelect, MenuError, FireRocket, FireBullet, StarPickup}
 
 public class SoundController : MonoBehaviour
 {
     [SerializeField] private AudioClip[] menu;
     [SerializeField] private AudioClip[] sfx;
+    [SerializeField] private AudioClip[] pickup;
     [SerializeField] private AudioClip[] music;
 
     private AudioSource musicSource;
@@ -153,6 +154,9 @@ public class SoundController : MonoBehaviour
                 break;
 			case SFX.MenuError:
                 sfxSource.PlayOneShot(menu[2]);
+                break;
+			case SFX.StarPickup:
+                sfxSource.PlayOneShot(pickup[0]);
                 break;
 			default:
 				break;
