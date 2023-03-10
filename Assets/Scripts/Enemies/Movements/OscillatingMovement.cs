@@ -12,7 +12,6 @@ public class OscillatingMovement : Movement, IHaveMovement
 	private float velChangePerSec = 0.04f;
 	private float velChangeTime = 1f;
 	private float velChangeTimer;
-	private float Speed = 0.1f;
 
 	private Vector2 startVel = Vector2.left;
 	private Vector2 vel = Vector2.zero;

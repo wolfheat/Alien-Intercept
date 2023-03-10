@@ -39,17 +39,14 @@ public class EnemySpawner : MonoBehaviour
 		Inputs.Instance.Controls.MainActionMap.G.performed += _ => SpawnByPlayerInput();// = _.ReadValue<float>();
 	}
 
-    public void StartSpawnRoutine(int type)
-    {
-		spawn = StartCoroutine(Spawn(40, 0.5f));
-	}
     private void Update()
     {
+        if (GameSettings.CurrentGameState != GameState.RunGame) { if (spawn != null) StopCoroutine(spawn); return; }
         if(currentLevel!=null) RunLevel();
     }
     private void RunLevel()
     {
-		List<EDefinitionPoint> pointsToRemove = new List<EDefinitionPoint>();
+        List<EDefinitionPoint> pointsToRemove = new List<EDefinitionPoint>();
 
         //Move the parent
         levelHolder.transform.position += Vector3.down * Time.deltaTime;
@@ -66,25 +63,41 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
-        UIHud.Instance.SetEnemiesRemaining(currentLevelPoints.Count,FindObjectsOfType<EnemyController>().ToArray().Length);
+        int enemiesRemaining = FindObjectsOfType<EnemyController>().ToArray().Length;
+        int pointsRemaining = currentLevelPoints.Count;
+		UIHud.Instance.SetEnemiesRemaining(pointsRemaining,enemiesRemaining);
+
+        if (enemiesRemaining == 0 && pointsRemaining == 0) NextLevel();
+
     }
 
+    private void NextLevel()
+    {
+        
+        Debug.Log("NEXT LEVEL");
+    }
+
+
+
+    public void StopLevelSpawning()
+    {
+		if (spawn != null) StopCoroutine(spawn);
+        spawn = null;
+		Debug.Log("Stopped Spawn CO");
+	}
     public void SetLevel(GameObject level)
     {
-        Debug.Log("Set Level");
+        Debug.Log("Creating Level "+level);
         if (currentLevel != null) RemoveLastLevel();
-
         currentLevel = Instantiate(level,levelHolder.transform);
         currentLevelPoints = new List<EDefinitionPoint>();
+        Debug.Log("Creating new Level points.");
         currentLevelPoints = currentLevel.GetComponentsInChildren<EDefinitionPoint>().ToList();
         levelHolder.transform.position = new Vector3(levelHolder.transform.position.x, 0f, levelHolder.transform.position.z);  
 	}
 
     private void RemoveLastLevel()
     {
-        StopCoroutine(spawn);
-        spawn = null;
-        Debug.Log("Stopped Spawn CO");
 		for (int i = currentLevelPoints.Count - 1; i >= 0; i--)
         {
             Destroy(currentLevelPoints[i].gameObject);
@@ -103,7 +116,6 @@ public class EnemySpawner : MonoBehaviour
 
 	private IEnumerator SpawnPointData(EDefinitionPoint p)
 	{
-		Debug.Log("Start Spawn CO");
 
         /*
 		if (p.definition is BaseEnemyDefinitionSO)
@@ -113,8 +125,6 @@ public class EnemySpawner : MonoBehaviour
 
 			while (createdAmount < enemyDefinition.unitsAmount && spawn != null)
 			{
-				Debug.Log("Creating Unit: ");
-				Debug.Log("spawn: " + spawn);
 				int positionID = Mathf.RoundToInt(p.transform.localPosition.x) + 1;
                 Transform positionTransform = enemySubParents[positionID].transform;
 				SpawnOneMob(enemyDefinition.type, positionTransform, enemyDefinition.movementString,enemyDefinition.health);
@@ -165,25 +175,20 @@ public class EnemySpawner : MonoBehaviour
 	}
     private void SpawnOneAt(EnemyType type, int posID, EnemyMovement movement)
     {
+        Debug.Log("Spawning one enemy of type "+ type+" at pos: "+posID);
         EnemyController newEnemy = Instantiate(enemies[(int)type], enemySubParents[posID].transform);
+        Debug.Log("Enemy enabled: "+newEnemy.gameObject.activeSelf);
         newEnemy.GetComponent<Animator>().Play(movement.ToString());
 	}
-	private IEnumerator Spawn(int amt,float t)
-    {
-        int createdAmount = 0;
 
-        while (createdAmount <= amt)
+    public IEnumerator KillAll()
+    {
+        Debug.Log("KILL ALL");
+		List<EnemyController> enemiesAlive = FindObjectsOfType<EnemyController>().ToList();
+		foreach (EnemyController e in enemiesAlive)
         {
-            EnemyController newEnemy = Instantiate(enemies[0],enemyParent.transform);
-			yield return new WaitForSeconds(t);
-            createdAmount++;       
-        }
-        createdAmount = 0;
-		while (createdAmount <= amt)
-        {
-            EnemyController newEnemy = Instantiate(enemies[1],enemyParent.transform);
-			yield return new WaitForSeconds(t);
-            createdAmount++;       
+            e.Die();
+            yield return new WaitForSeconds(0.05f);
         }
     }
 }

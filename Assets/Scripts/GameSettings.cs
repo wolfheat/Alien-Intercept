@@ -1,5 +1,7 @@
 using UnityEngine;
 
+public enum GameState { Menu, RunGame, Transition}
+
 public class GameSettings : MonoBehaviour
 {
 	public static float ScreenWidth { get; private set; }
@@ -11,6 +13,7 @@ public class GameSettings : MonoBehaviour
 	public static bool IsPaused { get; set; } = true;
 	public static bool AtMenu { get; set; } = true;
 	public static bool CanShoot { get; set; } = true;
+	public static GameState CurrentGameState { get; set; } = GameState.Menu;
 	
 	[SerializeField] bool useMusicSetting;
 

@@ -24,6 +24,7 @@ public class EnemyController : Movement
     
 	public void JustRemove()
 	{
+		Debug.Log("Enemy below game area");
 		gameObject.SetActive(false);
 	}
 

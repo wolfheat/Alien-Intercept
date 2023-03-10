@@ -28,6 +28,7 @@ public class StartMenuInput : MonoBehaviour
 	public void StartGameClicked()
 	{
 		Debug.Log("StartGame Clicked");
+		GameSettings.CurrentGameState = GameState.RunGame;
 		startMenu.gameObject.SetActive(false);
 		levelController.StartLevel();
 	}

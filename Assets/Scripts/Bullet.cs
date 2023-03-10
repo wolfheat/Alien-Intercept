@@ -8,8 +8,6 @@ public class Bullet : MonoBehaviour
     private float speed = 8f;
     private float lifeTime = 2f;
     private const float STARTLIFE = 2f;
-    private float outOfBoundsY = 2f;
-    float screenHeight;
     [SerializeField] private BulletType type;
     public GenericPool<Bullet> Pool { get; set; }
     public int Damage { get {return damage;}}

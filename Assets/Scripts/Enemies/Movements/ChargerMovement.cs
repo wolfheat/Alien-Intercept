@@ -5,7 +5,6 @@ public class ChargerMovement : OscillatingMovement
 {
 	private float chargeSpeed = 4f;
 	private float chargeSpeedup = 8f;
-	private float chargeSpeedupTimer = 0f;
 	private float chargeTimer = 0;
 	private float chargeTime = 3f;
 

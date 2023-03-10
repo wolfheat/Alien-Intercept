@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -48,19 +49,41 @@ public class LevelController : MonoBehaviour
         pausedScreen.gameObject.SetActive(p);
 	}
 
-    private void DoTransition()
+    private delegate void TransitionCallback();
+
+    private IEnumerator DoTransitionThenSetLevel(int level)
     {
-        transition.DoTransition();
-    }
-    private void RestartLevel()
+
+		GameSettings.CurrentGameState = GameState.Transition;
+        enemySpawner.StopLevelSpawning();
+
+		// Kill all enemies
+		yield return StartCoroutine(enemySpawner.KillAll());
+
+        // Start Fade
+        //transition.DoTransition(() => { SetSpawnerLevel(0); });
+        yield return StartCoroutine(transition.Darken());
+        Debug.Log("Transition FADE complete");
+
+        // Load new Level
+        SetSpawnerLevel(level);
+
+        // Remove Fade (can be changed to yield return to make it wait before starting game again)
+		StartCoroutine(transition.Lighten());
+
+		GameSettings.CurrentGameState = GameState.RunGame;
+		Debug.Log("Restart Level");
+	}
+	private void RestartLevel()
     {
         if(GameSettings.AtMenu) return; // Do not restart the level if game has not started yet and player is at the menu
-        Debug.Log("Restart Level");
-        DoTransition();
-		SetSpawnerLevel(0);
+
+		StartCoroutine(DoTransitionThenSetLevel(0));
+        
     }
     private void SetSpawnerLevel(int level)
     {
+        Debug.Log("Spawner Level set to: "+level+" Loading that level.");
         if (levels.Count > level) enemySpawner.SetLevel(levels[level]);
         else Debug.LogError("Forgot to assign levels to LevelController");
 	}
