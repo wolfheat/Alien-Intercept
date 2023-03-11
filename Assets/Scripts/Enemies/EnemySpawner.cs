@@ -21,7 +21,10 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] List<GameObject> enemySubParents = new List<GameObject>();
 
     [SerializeField] public GameObject levelHolder;
-    public GameObject currentLevel = null;
+    private float SpeedFactor = 1f;
+
+
+	public GameObject currentLevel = null;
     public List<EDefinitionPoint> currentLevelPoints;
 	
 	//  0   1   2   3   4   5   6   7   8   9   10
@@ -37,6 +40,7 @@ public class EnemySpawner : MonoBehaviour
 	private void Start()
 	{
 		Inputs.Instance.Controls.MainActionMap.G.performed += _ => SpawnByPlayerInput();// = _.ReadValue<float>();
+		Inputs.Instance.Controls.MainActionMap.P.performed += _ => ToggleSpeedFactor();// = _.ReadValue<float>();
 	}
 
     private void Update()
@@ -49,7 +53,7 @@ public class EnemySpawner : MonoBehaviour
         List<EDefinitionPoint> pointsToRemove = new List<EDefinitionPoint>();
 
         //Move the parent
-        levelHolder.transform.position += Vector3.down * Time.deltaTime;
+        levelHolder.transform.position += Vector3.down * Time.deltaTime * SpeedFactor;
 
         for (int i = currentLevelPoints.Count-1; i >= 0; i--)
         {
@@ -92,6 +96,10 @@ public class EnemySpawner : MonoBehaviour
         currentLevelPoints.Clear();
 	}
 
+    private void ToggleSpeedFactor()
+    {
+        SpeedFactor = (SpeedFactor == 1) ? 5 : 1;
+	}
     private void SpawnByPlayerInput()
     {
         //spawn = StartCoroutine(Spawn(Random.Range(1,20), Random.Range(0.05f, 1f)));

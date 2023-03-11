@@ -9,6 +9,7 @@ public class LevelController : MonoBehaviour
     [SerializeField] PlayerController playerControllerPrefab;
     [SerializeField] BackgroundController backgroundController;
     [SerializeField] EnemySpawner enemySpawner;
+    [SerializeField] LevelComplete levelComplete;
     [SerializeField] SoundController soundController;
     [SerializeField] GameObject pausedScreen;
 	[SerializeField] List<GameObject> levels = new List<GameObject>();
@@ -79,23 +80,28 @@ public class LevelController : MonoBehaviour
 
     private void Update()
     {
+        if(GameSettings.CurrentGameState != GameState.RunGame) return;
+
 		int enemiesRemaining = FindObjectsOfType<EnemyController>().ToArray().Length;
 		int pointsRemaining = enemySpawner.currentLevelPoints.Count;
 		UIHud.Instance.SetEnemiesRemaining(pointsRemaining, enemiesRemaining);
 
-		if (enemiesRemaining == 0 && pointsRemaining == 0 && GameSettings.CurrentGameState == GameState.RunGame) StartNextLevel();
+		if (enemiesRemaining == 0 && pointsRemaining == 0 && GameSettings.CurrentGameState == GameState.RunGame) StartCoroutine(StartNextLevel());
 	}
 
-	private void StartNextLevel()
+	private IEnumerator StartNextLevel()
     {
-        if(GameSettings.AtMenu) return; // Do not restart the level if game has not started yet and player is at the menu
+		GameSettings.CurrentGameState = GameState.Transition;
+		
+        yield return StartCoroutine(levelComplete.LevelCompletCO());
 
         currentLevel = (currentLevel + 1) % levels.Count;
 
 		StartCoroutine(DoTransitionThenSetLevel(currentLevel));
         
     }
-	private void RestartLevel()
+
+    private void RestartLevel()
     {
         if(GameSettings.AtMenu) return; // Do not restart the level if game has not started yet and player is at the menu
 

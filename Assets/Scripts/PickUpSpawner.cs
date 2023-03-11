@@ -20,7 +20,6 @@ public class PickUpSpawner : MonoBehaviour
 
 	public void SpawnPickup(PickUpType type, Transform transform)
 	{
-		Debug.Log("SPAWN PICKUP");
 		var pickup = Instantiate(pickupsPrefab[(int)type],pickupHolder.transform);
 		pickup.transform.position = transform.position;
 	}

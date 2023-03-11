@@ -35,10 +35,13 @@ DEVLOG FOR - ALL BY AI - GAMEJAM
 		* Updated so Boss have more health and adjustable in the SO
 10/3	* Transition now stops the game and hinders new enemies from spawning. 
 		* There is a fading effect and the enemies on screen are killed off one by one for a nice effect.
+		* Added collectable stars that are animationsprites. They spawn from enemies and can be 
+		picked Up by player. Also moves downwards at constant speed.
+		* Added Level Complete text after completing a level by killing all enemies. Next Level loads automatically.
 
 
 
-		BUG
+		BUGS
 		
 		TODO
 		* Make light baked? check if possible or other solution
@@ -46,6 +49,7 @@ DEVLOG FOR - ALL BY AI - GAMEJAM
 		* Add enemy bullets
 		* Have separate boss music
 		* End level in nice fashion and make transition to next level
+		* Add Start Level text get ready show at start of level
 
 		* Add shake and other effects for death of enemy, effect for getting hit (red)
 		* Make enemy genereation system for entire levels
