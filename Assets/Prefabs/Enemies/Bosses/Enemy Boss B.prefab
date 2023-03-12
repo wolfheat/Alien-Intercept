@@ -262,9 +262,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5578822748428940476}
   - component: {fileID: 3409994478026276179}
-  - component: {fileID: 8462205360023145993}
   - component: {fileID: 4591440456816531391}
-  - component: {fileID: 2877237458059080762}
+  - component: {fileID: 4267902180647293028}
+  - component: {fileID: 5134162541493738207}
   m_Layer: 7
   m_Name: Enemy Boss B
   m_TagString: Untagged
@@ -301,32 +301,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbe28f1bcc8b9024285bc852001fd8bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &8462205360023145993
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5287609478062506770}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0023481846, y: -0.019834518}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.69365454, y: 0.62379456}
-  m_EdgeRadius: 0
 --- !u!50 &4591440456816531391
 Rigidbody2D:
   serializedVersion: 4
@@ -348,18 +322,62 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &2877237458059080762
-MonoBehaviour:
+--- !u!60 &4267902180647293028
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5287609478062506770}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aea2a7c7cabcc8e4aa7d1f64f0df3d43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0, y: 1.1595653}
+      - {x: -0.22927105, y: 1.5112783}
+      - {x: -0.95305014, y: -0.19456351}
+      - {x: -1.3348613, y: -0.79714936}
+      - {x: -1.5410337, y: -1.6241217}
+      - {x: -0.016661942, y: -1.333411}
+      - {x: 1.5502782, y: -1.6270695}
+      - {x: 1.2692312, y: -0.67633677}
+      - {x: 0.8994681, y: -0.03673154}
+      - {x: 0.20042443, y: 1.5208333}
+  m_UseDelaunayMesh: 0
+--- !u!95 &5134162541493738207
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5287609478062506770}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b32768b23be32344f96a9d9c06f6c8b0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5907999653098171468
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,7 +38,7 @@ DEVLOG FOR - ALL BY AI - GAMEJAM
 		* Added collectable stars that are animationsprites. They spawn from enemies and can be 
 		picked Up by player. Also moves downwards at constant speed.
 		* Added Level Complete text after completing a level by killing all enemies. Next Level loads automatically.
-
+12/3	* Added the four bosses and made SO definitions for them.
 
 
 		BUGS

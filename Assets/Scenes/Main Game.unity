@@ -3960,6 +3960,7 @@ MonoBehaviour:
   pausedScreen: {fileID: 886739274}
   levels:
   - {fileID: 6051697102080486245, guid: a9e4e7d60d50ea545a97ab43e8a9387c, type: 3}
+  - {fileID: 6051697102080486245, guid: 5efa6929e143d674f8982de7294179f1, type: 3}
   transition: {fileID: 970699416}
 --- !u!4 &1253341617
 Transform:
@@ -4365,6 +4366,7 @@ MonoBehaviour:
   - {fileID: 8298117242605547549, guid: 2afadab4a64ad4d4cac5d11c4d54f7e3, type: 3}
   bosses:
   - {fileID: 8298117242605547549, guid: 975842552f758c74bb8436a29cb25ca1, type: 3}
+  - {fileID: 3409994478026276179, guid: db6bb03c4f61e5741a473ff47e6d94d0, type: 3}
   enemyParent: {fileID: 811414420}
   enemySubParents:
   - {fileID: 334324344}
