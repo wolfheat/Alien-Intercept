@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 
 public enum EnemyType{EnemyA,EnemyB,AnimatedA,AnimatedB}
 public enum BossType{BossA,BossB,BossC,BossD}
-public enum BossMovement{ BossAInit,BossBInit}
+public enum BossMovement{ BossAInit,BossBInit, BossCInit, BossDInit }
 public enum EnemyMovement{ StraightDownSlow,DownRightDownA, DownRightDownB, DownRightDownC,DownLeftDownA, DownLeftDownB, DownLeftDownC, AnimationA,AnimationB,AnimationC,AnimationD}
 public enum EnemyShooting {none,A,B,C,D}
 

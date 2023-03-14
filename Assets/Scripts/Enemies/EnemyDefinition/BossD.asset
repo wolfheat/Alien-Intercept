@@ -17,5 +17,5 @@ MonoBehaviour:
   timer: 1
   speed: 1
   type: 3
-  movement: 0
+  movement: 3
   shooting: 0
