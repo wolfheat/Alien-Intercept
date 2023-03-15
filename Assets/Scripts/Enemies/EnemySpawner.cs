@@ -158,18 +158,21 @@ public class EnemySpawner : MonoBehaviour
     {
         EnemyController newEnemy = Instantiate(type, trans);
         newEnemy.Health = health;
-        newEnemy.GetComponent<Animator>().Play(movement);
+		Animator animator = newEnemy.GetComponent<Animator>();
+		if (animator != null) animator.Play(movement.ToString());
 	}
 	private void SpawnOneBossAt(BossType type, int posID, BossMovement movement, int health)
     {
         EnemyController newEnemy = Instantiate(bosses[(int)type], enemySubParents[posID].transform);
         newEnemy.Health = health;
-        newEnemy.GetComponent<Animator>().Play(movement.ToString());
+		Animator animator = newEnemy.GetComponent<Animator>();
+		if (animator != null) animator.Play(movement.ToString());
 	}
     private void SpawnOneAt(EnemyType type, int posID, EnemyMovement movement)
     {
         EnemyController newEnemy = Instantiate(enemies[(int)type], enemySubParents[posID].transform);
-        newEnemy.GetComponent<Animator>().Play(movement.ToString());
+        Animator animator = newEnemy.GetComponent<Animator>();
+		if(animator!=null)animator.Play(movement.ToString());
 	}
 
     public IEnumerator KillAll()

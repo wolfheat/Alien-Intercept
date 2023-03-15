@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 7188444875592342257}
   - component: {fileID: -2518699616630872162}
   m_Layer: 7
-  m_Name: Enemy Animated
+  m_Name: Enemy Animated A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
