@@ -4117,7 +4117,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 645910435}
-  - {fileID: 6051697100986451286}
+  - {fileID: 1924447297}
   m_Father: {fileID: 1442147419}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4372,6 +4372,8 @@ MonoBehaviour:
   bosses:
   - {fileID: 8298117242605547549, guid: 975842552f758c74bb8436a29cb25ca1, type: 3}
   - {fileID: 3409994478026276179, guid: db6bb03c4f61e5741a473ff47e6d94d0, type: 3}
+  - {fileID: 3409994478026276179, guid: e15fdca65d4507f4193a41bc0dffd429, type: 3}
+  - {fileID: 3409994478026276179, guid: 857a60893bc689644973c6958a3adf6b, type: 3}
   enemyParent: {fileID: 811414420}
   enemySubParents:
   - {fileID: 334324344}
@@ -5408,6 +5410,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1924447297 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5445646636787406075, guid: 39f1a06be20ed5a4380511973c5b5e1c, type: 3}
+  m_PrefabInstance: {fileID: 1758973072813887917}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1936572567
 GameObject:
   m_ObjectHideFlags: 0
@@ -6155,11 +6162,6 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 95df90c9a3db7e0429d2db4ab2d75920, type: 3}
---- !u!4 &6051697100986451286 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5445646636787406075, guid: 39f1a06be20ed5a4380511973c5b5e1c, type: 3}
-  m_PrefabInstance: {fileID: 1758973072813887917}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6051697101643670727
 PrefabInstance:
   m_ObjectHideFlags: 0
