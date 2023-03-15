@@ -39,6 +39,9 @@ DEVLOG FOR - ALL BY AI - GAMEJAM
 		picked Up by player. Also moves downwards at constant speed.
 		* Added Level Complete text after completing a level by killing all enemies. Next Level loads automatically.
 12/3	* Added the four bosses and made SO definitions for them.
+14/3	* Fixed boss B and Made boss C movement
+15/3	* Added Enemy B to level 3, fixed so animator is now an optional movement
+		* Made all pickups remove when changing level
 
 
 		BUGS

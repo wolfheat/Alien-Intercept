@@ -20,7 +20,7 @@ public class LevelController : MonoBehaviour
 
 	private void Start()
     {
-		Inputs.Instance.Controls.MainActionMap.R.performed += _ => RestartLevel();// = _.ReadValue<float>();
+		Inputs.Instance.Controls.MainActionMap.R.performed += _ => StartCoroutine(RestartLevel());// = _.ReadValue<float>();
         Inputs.Instance.Controls.MainActionMap.ESC.performed += _ => Pause(!GameSettings.IsPaused);// = _.ReadValue<float>();
 	}
 
@@ -57,25 +57,24 @@ public class LevelController : MonoBehaviour
     private IEnumerator DoTransitionThenSetLevel(int level)
     {
 
-		GameSettings.CurrentGameState = GameState.Transition;
         enemySpawner.StopLevelSpawning();
 
 		// Kill all enemies
 		yield return StartCoroutine(enemySpawner.KillAll());
+        // Remove pickups
+        PickUpSpawner.Instance.RemoveAllPickups();
 
-        // Start Fade
-        //transition.DoTransition(() => { SetSpawnerLevel(0); });
-        yield return StartCoroutine(transition.Darken());
+		// Start Fade
+		//transition.DoTransition(() => { SetSpawnerLevel(0); });
+		yield return StartCoroutine(transition.Darken());
         Debug.Log("Transition FADE complete");
 
         // Load new Level
         SetSpawnerLevel(level);
 
-        // Remove Fade (can be changed to yield return to make it wait before starting game again)
-		StartCoroutine(transition.Lighten());
+		// Remove Fade (can be changed to yield return to make it wait before starting game again)
+		yield return StartCoroutine(transition.Lighten());
 
-		GameSettings.CurrentGameState = GameState.RunGame;
-		Debug.Log("Restart Level");
 	}
 
     private void Update()
@@ -93,21 +92,29 @@ public class LevelController : MonoBehaviour
     {
 		GameSettings.CurrentGameState = GameState.Transition;
 		
-        yield return StartCoroutine(levelComplete.LevelCompletCO());
+        yield return StartCoroutine(levelComplete.LevelCompletCO(currentLevel));
 
         currentLevel = (currentLevel + 1) % levels.Count;
 
-		StartCoroutine(DoTransitionThenSetLevel(currentLevel));
-        
-    }
+		yield return StartCoroutine(DoTransitionThenSetLevel(currentLevel));
 
-    private void RestartLevel()
+		yield return StartCoroutine(levelComplete.NewLevelStarting(currentLevel));
+
+		GameSettings.CurrentGameState = GameState.RunGame;
+	}
+
+	private IEnumerator RestartLevel()
     {
-        if(GameSettings.AtMenu) return; // Do not restart the level if game has not started yet and player is at the menu
+        if(GameSettings.AtMenu) yield break; // Do not restart the level if game has not started yet and player is at the menu
 
-		StartCoroutine(DoTransitionThenSetLevel(currentLevel));
-        
-    }
+		GameSettings.CurrentGameState = GameState.Transition;
+
+		yield return StartCoroutine(DoTransitionThenSetLevel(currentLevel));
+
+		yield return StartCoroutine(levelComplete.NewLevelStarting(currentLevel));
+
+		GameSettings.CurrentGameState = GameState.RunGame;
+	}
     private void SetSpawnerLevel(int level)
     {
         Debug.Log("Spawner Level set to: "+level+" Loading that level.");

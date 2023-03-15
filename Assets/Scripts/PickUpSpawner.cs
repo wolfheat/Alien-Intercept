@@ -22,6 +22,14 @@ public class PickUpSpawner : MonoBehaviour
 	{
 		var pickup = Instantiate(pickupsPrefab[(int)type],pickupHolder.transform);
 		pickup.transform.position = transform.position;
+
+	}
+	public void RemoveAllPickups()
+	{
+		foreach (Transform pickup in pickupHolder.transform)
+		{
+			pickup.gameObject.SetActive(false);	
+		}
 	}
 
 
