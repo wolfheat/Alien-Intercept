@@ -17,6 +17,10 @@ public class SimpleFlashEffect : MonoBehaviour
 		baseMaterial = spriteRenderer.sharedMaterial;
 	}
 
+	private void OnEnable()
+	{
+		spriteRenderer.material = baseMaterial;		
+	}
 	public void DoSimpleFlash()
 	{
 		if (flashCoroutine == null)

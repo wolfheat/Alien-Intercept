@@ -42,6 +42,11 @@ DEVLOG FOR - ALL BY AI - GAMEJAM
 14/3	* Fixed boss B and Made boss C movement
 15/3	* Added Enemy B to level 3, fixed so animator is now an optional movement
 		* Made all pickups remove when changing level
+16/3	* Added stats for player stars
+		* EnemyB now pauses when paused
+		* Added a healthbar with a heart
+		* Player now die and game restarts, health and healthbar is reset
+
 
 
 		BUGS

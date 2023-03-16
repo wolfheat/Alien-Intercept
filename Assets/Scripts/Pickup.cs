@@ -9,6 +9,7 @@ public class Pickup : MonoBehaviour
 		if (collider.transform.GetComponent<PlayerController>())
 		{
 			SoundController.Instance.PlaySFX(SFX.StarPickup);
+			PlayerStats.Instance.AddStars();
 			Destroy(gameObject);
 		}
 	}

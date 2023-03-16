@@ -29,11 +29,18 @@ public abstract class BaseController : MonoBehaviour
 
 
 	private void OnCollisionEnter2D(Collision2D collision)
-	{		
-		if(collision.gameObject.GetComponent<EnemyController>() != null)
-		GettingHit();
+	{
+		int dmg = 5;
+		if(collision.gameObject.GetComponent<Bullet>())
+		dmg = collision.gameObject.GetComponent<Bullet>().Damage;
+		GettingHit(dmg);
 	}
 
+	protected virtual void GettingHit(int dmg=0)
+	{
+		if (flashEffect != null)
+			flashEffect.DoSimpleFlash();
+	}
 	protected virtual void OnEnable()
 	{
 		if (useBullets) bullets = StartCoroutine(AutoSpawner(bulletPool, bulletCreationPositions,bulletCreationTime));
@@ -74,11 +81,6 @@ public abstract class BaseController : MonoBehaviour
 		}
 	}
 
-	public void GettingHit()
-	{
-		if (flashEffect != null)
-			flashEffect.DoSimpleFlash();
-	}
 	private void Update()
 	{
 		if (GameSettings.IsPaused) return;

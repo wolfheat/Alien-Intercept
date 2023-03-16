@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
-    [SerializeField] PlayerController playerControllerPrefab;
+    [SerializeField] PlayerController playerController;
     [SerializeField] BackgroundController backgroundController;
     [SerializeField] EnemySpawner enemySpawner;
     [SerializeField] LevelComplete levelComplete;
@@ -72,6 +72,9 @@ public class LevelController : MonoBehaviour
         // Load new Level
         SetSpawnerLevel(level);
 
+        //Reset Player Health
+		PlayerStats.Instance.ResetHealth();
+
 		// Remove Fade (can be changed to yield return to make it wait before starting game again)
 		yield return StartCoroutine(transition.Lighten());
 
@@ -100,9 +103,15 @@ public class LevelController : MonoBehaviour
 
 		yield return StartCoroutine(levelComplete.NewLevelStarting(currentLevel));
 
+        ActivatePlayer();
+
 		GameSettings.CurrentGameState = GameState.RunGame;
 	}
 
+    public void DieAndRestart()
+    {
+        StartCoroutine(RestartLevel());
+    }
 	private IEnumerator RestartLevel()
     {
         if(GameSettings.AtMenu) yield break; // Do not restart the level if game has not started yet and player is at the menu
@@ -112,6 +121,8 @@ public class LevelController : MonoBehaviour
 		yield return StartCoroutine(DoTransitionThenSetLevel(currentLevel));
 
 		yield return StartCoroutine(levelComplete.NewLevelStarting(currentLevel));
+
+		ActivatePlayer();
 
 		GameSettings.CurrentGameState = GameState.RunGame;
 	}
@@ -134,7 +145,7 @@ public class LevelController : MonoBehaviour
 
     private void ActivatePlayer()
     {
-		playerControllerPrefab.gameObject.SetActive(true);
+		playerController.gameObject.SetActive(true);
 
 	}
 }

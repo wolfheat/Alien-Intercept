@@ -10,6 +10,7 @@ public class ChargerMovement : OscillatingMovement
 
 	public override void Movement()
 	{
+		if (GameSettings.IsPaused) return;
 		chargeTimer += Time.deltaTime;
 		if (chargeTimer < chargeTime) base.Movement();
 		else ChargMovement();
