@@ -48,7 +48,6 @@ DEVLOG FOR - ALL BY AI - GAMEJAM
 		* Player now die and game restarts, health and healthbar is reset
 
 
-
 		BUGS
 		
 		TODO

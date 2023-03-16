@@ -19,7 +19,9 @@ public class SimpleFlashEffect : MonoBehaviour
 
 	private void OnEnable()
 	{
-		spriteRenderer.material = baseMaterial;		
+		Debug.Log("basematerial set "+baseMaterial);
+		spriteRenderer.material = baseMaterial;
+		flashCoroutine = null;
 	}
 	public void DoSimpleFlash()
 	{
