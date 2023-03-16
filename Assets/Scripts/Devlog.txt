@@ -51,8 +51,10 @@ DEVLOG FOR - ALL BY AI - GAMEJAM
 		BUGS
 		
 		TODO
+		* Add Continue button when dying before reload?
+		* Pool Stars, and enemies?
 		* Make light baked? check if possible or other solution
-		* Make other explosion for killing bosses
+		* Make other explosion for killing bosses and player dying
 		* Add enemy bullets
 		* Have separate boss music
 		* End level in nice fashion and make transition to next level
