@@ -54,7 +54,8 @@ public class BackgroundByParts : MonoBehaviour
 			backgroundParts.Add(newPart);
 			newPart.transform.localScale = new Vector3(BackgroundPartScale,BackgroundPartScale,1); 
 			SpriteRenderer newSpriteRenderer = newPart.AddComponent<SpriteRenderer>();
-			newSpriteRenderer.sprite = backgroundPartsSprites[i];			
+			newSpriteRenderer.sprite = backgroundPartsSprites[i];
+			newSpriteRenderer.sortingLayerID = SortingLayer.NameToID("Background");
 		}
 	}
 
