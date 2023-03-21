@@ -10,7 +10,6 @@ public abstract class GenericPool<T> : MonoBehaviour where T : Component
 
     void Awake()
     {
-        //if (Instance != null) { Debug.Log("Destroying Instane, there is allready one of type:"+typeof(T)); Destroy(this);}
 		Instance = this;
     }
 

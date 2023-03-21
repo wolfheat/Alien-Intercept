@@ -1,15 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-public class Pickup : MonoBehaviour, ICanGetOutOfBounds
+public class Pickup : MonoBehaviour, ICanGetOutOfBounds, ICanCollideWithPlayer
 {
 	private const float MoveSpeed = 2;
 	private void OnTriggerEnter2D(Collider2D collider)
 	{
 		if (collider.transform.GetComponent<PlayerController>())
 		{
-			SoundController.Instance.PlaySFX(SFX.StarPickup);
-			PlayerStats.Instance.AddStars();
-			Destroy(gameObject);
+			CollidingWithPlayer();			
 		}
 	}
 
@@ -29,7 +28,16 @@ public class Pickup : MonoBehaviour, ICanGetOutOfBounds
 
 	public void JustRemove()
 	{
-		Debug.Log("Enemy below game area");
 		gameObject.SetActive(false);
+	}
+
+	public void SetType(PickUpType type)
+	{
+		Debug.Log("Set Type");
+	}
+
+	public virtual void CollidingWithPlayer()
+	{		
+		Destroy(gameObject);
 	}
 }

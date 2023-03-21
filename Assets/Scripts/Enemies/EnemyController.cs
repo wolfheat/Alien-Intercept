@@ -2,6 +2,7 @@ using UnityEngine;
 
 
 public interface ICanGetOutOfBounds { void OutOfBoundsCheck(); };
+public interface ICanCollideWithPlayer { void CollidingWithPlayer(); };
 
 public class EnemyController : Movement, ICanGetOutOfBounds
 {

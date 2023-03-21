@@ -647,7 +647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupsPrefab:
-  - {fileID: 8700230792884038313, guid: b369f5a34745ee048bbb3cd9732ad4a9, type: 3}
+  - {fileID: -6824041465901782274, guid: b369f5a34745ee048bbb3cd9732ad4a9, type: 3}
   pickupHolder: {fileID: 1054612056}
 --- !u!4 &169753436
 Transform:
