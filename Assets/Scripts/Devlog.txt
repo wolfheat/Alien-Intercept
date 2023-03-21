@@ -47,6 +47,8 @@ DEVLOG FOR - ALL BY AI - GAMEJAM
 		* Added a healthbar with a heart
 		* Player now die and game restarts, health and healthbar is reset
 20/3	* Changed so there are different global lights on Background Units and UI
+21/3	* Changed Size of enemies
+		* Pickups are now removed when OOB
 
 		BUGS
 		

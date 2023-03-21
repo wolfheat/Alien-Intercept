@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public class EnemyController : Movement
+
+public interface ICanGetOutOfBounds { void OutOfBoundsCheck(); };
+
+public class EnemyController : Movement, ICanGetOutOfBounds
 {
     private int health = 100;
 	public int Health { get { return health; } set {health = value;} }
@@ -33,7 +36,7 @@ public class EnemyController : Movement
 	}
 
 
-	private void OutOfBoundsCheck()
+	public void OutOfBoundsCheck()
 	{
 
 		if (transform.position.y < 0f)
