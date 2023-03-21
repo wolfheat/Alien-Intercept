@@ -26,9 +26,9 @@ public abstract class GenericPool<T> : MonoBehaviour where T : Component
     {
         for (int i = 0; i < amt; i++)
         {
-            T newT = Instantiate(prefab);
-            newT.gameObject.SetActive(false);
-            pool.Enqueue(newT);
+            T newObject = Instantiate(prefab);
+            newObject.gameObject.SetActive(false);
+            pool.Enqueue(newObject);
         }
     }
 

@@ -49,6 +49,8 @@ DEVLOG FOR - ALL BY AI - GAMEJAM
 20/3	* Changed so there are different global lights on Background Units and UI
 21/3	* Changed Size of enemies
 		* Pickups are now removed when OOB
+		* Reworked the Stars to Pool, added Silver Stars with higher value
+
 
 		BUGS
 		

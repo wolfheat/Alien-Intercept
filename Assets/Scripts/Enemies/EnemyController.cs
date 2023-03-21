@@ -2,7 +2,7 @@ using UnityEngine;
 
 
 public interface ICanGetOutOfBounds { void OutOfBoundsCheck(); };
-public interface ICanCollideWithPlayer { void CollidingWithPlayer(); };
+public interface ICollideWithPlayer { void CollideWithPlayer(); };
 
 public class EnemyController : Movement, ICanGetOutOfBounds
 {
@@ -22,7 +22,9 @@ public class EnemyController : Movement, ICanGetOutOfBounds
 	public void Die()
 	{
 		//Spawn Star
-		PickUpSpawner.Instance.SpawnPickup(PickUpType.GoldStar,transform);
+		int type = Random.Range(0, 2);
+		if(type == 0) PickUpSpawner.Instance.SpawnPickup(PickUpType.GoldStar,transform);
+		else PickUpSpawner.Instance.SpawnPickup(PickUpType.SilverStar, transform);
 
 		ParticleSystemController.Instance.PlayParticleAt(ParticleType.EnemyBlowUpA,transform);
 		SoundController.Instance.PlaySFX(SFX.ShipDestroyedA);

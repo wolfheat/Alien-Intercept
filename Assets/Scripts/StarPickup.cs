@@ -1,9 +1,9 @@
 ﻿public class StarPickup : Pickup
 {
-	public override void CollidingWithPlayer()
+	public override void CollideWithPlayer()
 	{
 		SoundController.Instance.PlaySFX(SFX.StarPickup);
-		PlayerStats.Instance.AddStars();
-		base.CollidingWithPlayer();
+		PlayerStats.Instance.AddStars(value);
+		base.CollideWithPlayer();
 	}
 }

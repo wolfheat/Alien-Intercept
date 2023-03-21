@@ -1,14 +1,17 @@
 ﻿using System;
 using UnityEngine;
 
-public class Pickup : MonoBehaviour, ICanGetOutOfBounds, ICanCollideWithPlayer
+public class Pickup : MonoBehaviour, ICanGetOutOfBounds, ICollideWithPlayer
 {
 	private const float MoveSpeed = 2;
+	public GenericPool<Pickup> pool;
+	public int value = 1;
+
 	private void OnTriggerEnter2D(Collider2D collider)
 	{
 		if (collider.transform.GetComponent<PlayerController>())
 		{
-			CollidingWithPlayer();			
+			CollideWithPlayer();			
 		}
 	}
 
@@ -22,13 +25,14 @@ public class Pickup : MonoBehaviour, ICanGetOutOfBounds, ICanCollideWithPlayer
 	{
 		if (transform.position.y < 0f)
 		{
-			JustRemove();
+			ReturnToPool();
 		}
 	}
 
-	public void JustRemove()
+	public void ReturnToPool()
 	{
-		gameObject.SetActive(false);
+		pool?.ReturnToPool(this);
+		if(pool==null)Destroy(gameObject);
 	}
 
 	public void SetType(PickUpType type)
@@ -36,8 +40,8 @@ public class Pickup : MonoBehaviour, ICanGetOutOfBounds, ICanCollideWithPlayer
 		Debug.Log("Set Type");
 	}
 
-	public virtual void CollidingWithPlayer()
-	{		
-		Destroy(gameObject);
+	public virtual void CollideWithPlayer()
+	{
+		ReturnToPool();
 	}
 }

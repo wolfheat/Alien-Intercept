@@ -49,8 +49,6 @@ public class Bullet : MonoBehaviour
 
     public void Die()
 	{
-		//Destroy(gameObject);
-		//gameObject.SetActive(false);
         Pool.ReturnToPool(this);
     }
 
