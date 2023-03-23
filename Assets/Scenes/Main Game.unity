@@ -649,7 +649,8 @@ MonoBehaviour:
   pickupHolder: {fileID: 1054612056}
   Pools:
   - {fileID: 991140636}
-  - {fileID: 0}
+  - {fileID: 1775852600}
+  - {fileID: 536192188}
 --- !u!4 &169753436
 Transform:
   m_ObjectHideFlags: 0
