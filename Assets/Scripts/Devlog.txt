@@ -50,6 +50,7 @@ DEVLOG FOR - ALL BY AI - GAMEJAM
 21/3	* Changed Size of enemies
 		* Pickups are now removed when OOB
 		* Reworked the Stars to Pool, added Silver Stars with higher value
+23/3	* Added heart pickup that fully heals player 
 
 
 		BUGS

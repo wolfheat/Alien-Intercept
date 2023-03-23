@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum PickUpType{ GoldStar, SilverStar}
+public enum PickUpType{ GoldStar, SilverStar, Health}
 
 public class PickUpSpawner : MonoBehaviour
 {
@@ -36,9 +36,12 @@ public class PickUpSpawner : MonoBehaviour
 
 	public void RemoveAllPickups()
 	{
-		foreach (Transform pickup in pickupHolder.transform)
+		foreach (Transform pickupParent in pickupHolder.transform)
 		{
-			pickup.gameObject.SetActive(false);	
+			foreach (Transform pickup in pickupParent.transform)
+			{
+				pickup.gameObject.SetActive(false);
+			}
 		}
 	}
 

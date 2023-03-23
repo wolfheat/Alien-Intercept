@@ -44,4 +44,9 @@ public class PlayerStats : MonoBehaviour
 		UIHud.Instance.UpdateHealthBar(barpercent);
     }
 
+	internal void AddHealth(int value)
+	{
+        health = maxHealth;
+        UpdateHealthBar();
+	}
 }

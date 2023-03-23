@@ -22,9 +22,10 @@ public class EnemyController : Movement, ICanGetOutOfBounds
 	public void Die()
 	{
 		//Spawn Star
-		int type = Random.Range(0, 2);
+		int type = Random.Range(0, 3);
 		if(type == 0) PickUpSpawner.Instance.SpawnPickup(PickUpType.GoldStar,transform);
-		else PickUpSpawner.Instance.SpawnPickup(PickUpType.SilverStar, transform);
+		else if (type == 1) PickUpSpawner.Instance.SpawnPickup(PickUpType.SilverStar, transform);
+		else PickUpSpawner.Instance.SpawnPickup(PickUpType.Health, transform);
 
 		ParticleSystemController.Instance.PlayParticleAt(ParticleType.EnemyBlowUpA,transform);
 		SoundController.Instance.PlaySFX(SFX.ShipDestroyedA);
